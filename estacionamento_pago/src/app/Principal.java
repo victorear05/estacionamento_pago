@@ -3,8 +3,7 @@ package app;
 public class Principal {
 
 	public static void main(String[] args) {
-		// Onde tudo começa :)
-		// Testando!
+		// Onde tudo comeÃ§a :)
 	}
 
 }
