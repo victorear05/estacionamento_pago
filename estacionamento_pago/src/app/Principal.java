@@ -54,7 +54,7 @@ public class Principal {
 					//1 - Cadastrar Veículo
 					//2 - Registrar horário de entrada e de saída 
 					//3 - Calcular Valor
-			
+					break;
 				}
 			
 			}
