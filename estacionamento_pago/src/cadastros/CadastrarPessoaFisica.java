@@ -2,5 +2,5 @@ package cadastros;
 
 public class CadastrarPessoaFisica {
 	//implementar cadastros!
-	//pessoas fisicas
+	//somente para veículos mensalistas
 }

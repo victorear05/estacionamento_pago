@@ -2,6 +2,7 @@ package app;
 
 import javax.swing.JOptionPane;
 import cobranca.Valores;
+import cadastros.CadastrarPessoaFisica;
 
 public class Principal {
 
