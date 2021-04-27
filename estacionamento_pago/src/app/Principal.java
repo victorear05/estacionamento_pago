@@ -9,14 +9,16 @@ public class Principal {
 	}
 	
 	public static void menu() {
+		
 		int opcao = 0;
 		
+		String menu = "Selecione uma opção:\n"
+				+ "1 - Para usuário Mensalista já cadastrado\n"
+				+ "2 - Para novo usuário Mensalista\n"
+				+ "3 - Entrada Simples\n"
+				+ "0 - Encerrar Programa\n";
+		
 		do { 
-			String menu = "Selecione uma opção:"
-					+ "1 - Para usuário Mensalista já cadastrado"
-					+ "2 - Para novo usuário Mensalista"
-					+ "3 - Entrada Simples"
-					+ "0 - Encerrar Programa";
 			
 			String strOpcao = JOptionPane.showInputDialog(null, menu);
 			opcao = Integer.parseInt(strOpcao);
@@ -25,20 +27,37 @@ public class Principal {
 				
 				case 1: {
 					//Usuário Mensalista já cadastrado
-					
-					//Carro já cadastrado?
-					//Sim:
-					//1 - Buscar Veículo
-					//2 - Registrar horário de entrada e de saída 
-					//Não:
-					//1 - Cadastrar Veículo
-					//2 - Registrar horário de entrada e de saída 
-					break;
+					int op1;
+					do {
+						String strOp1 = JOptionPane.showInputDialog(null, "Escolha uma opção:"
+								+ "1 - Carro já cadastrado"
+								+ "2 - Cadastrar novo carro"
+								+ "0 - Voltar");
+						op1 = Integer.parseInt(strOp1);
+						switch(op1) {
+							case 1: {
+								//1 - Buscar Veículo
+								//2 - Registrar horário de entrada e de saída 
+								break;
+							}
+						
+							case 2: {
+								//1 - Cadastrar Veículo
+								//2 - Registrar horário de entrada e de saída 
+								break;
+							}
+							
+							case 0: {
+								//Voltar
+								break;
+							}
+						
+						}
+						
+					}while(op1 != 0);
 				}
-			
 				case 2: {
 					//Novo usuário Mensalista
-					
 					//1 - Cadastrar usuário 
 					//2 - Cadastrar carro(s)
 					//3 - Horário de entrada e de saída
@@ -48,22 +67,46 @@ public class Principal {
 				
 				case 3: {
 					//Entrada Simples
+					int op3;
+					do {
+						String strOp3 = JOptionPane.showInputDialog(null, "Escolha uma opção:"
+								+ "1 - Carro já cadastrado"
+								+ "2 - Cadastrar novo carro"
+								+ "0 - Voltar");
+						op3 = Integer.parseInt(strOp3);
+						switch(op3) {
+							case 1: {
+								//1 - Buscar Veículo
+								//2 - Registrar horário de entrada e de saída 
+								//3 - Calcular Valor
+								break;
+							}
+						
+							case 2: {
+								//1 - Cadastrar Veículo
+								//2 - Registrar horário de entrada e de saída 
+								//3 - Calcular Valor
+								break;
+							}
+							
+							case 0: {
+								//Voltar
+								break;
+							}
+						
+						}
+						
+					}while(op3 != 0);
 					
-					//Carro já cadastrado?
-					//Sim:
-					//1 - Buscar Veículo
-					//2 - Registrar horário de entrada e de saída 
-					//3 - Calcular Valor
-					//Não:
-					//1 - Cadastrar Veículo
-					//2 - Registrar horário de entrada e de saída 
-					//3 - Calcular Valor
 					break;
 				}
-				case 0:{
+				case 0: {
 					//Encerrar programa;
+					JOptionPane.showMessageDialog(null, "Até mais!");
 					break;
 				}
+				default:
+					JOptionPane.showMessageDialog(null, "Opção inválida, escolha uma das opções disponíveis!");
 			}
 			
 		}while(opcao != 0);
