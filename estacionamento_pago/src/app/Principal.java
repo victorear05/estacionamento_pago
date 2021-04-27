@@ -28,8 +28,7 @@ public class Principal {
 				case 1: {
 					//Usuário Mensalista já cadastrado
 					int op1;
-					do {
-						String strOp1 = JOptionPane.showInputDialog("Escolha uma opção:"
+						String strOp1 = JOptionPane.showInputDialog("Escolha uma opção:\n"
 								+ "1 - Carro já cadastrado\n"
 								+ "2 - Cadastrar novo carro\n"
 								+ "0 - Voltar\n");
@@ -51,10 +50,7 @@ public class Principal {
 								//Voltar
 								break;
 							}
-						
 						}
-						
-					}while(op1 != 0);
 				}
 				case 2: {
 					//Novo usuário Mensalista
@@ -68,8 +64,8 @@ public class Principal {
 				case 3: {
 					//Entrada Simples
 					int op3;
-					do {
-						String strOp3 = JOptionPane.showInputDialog("Escolha uma opção:"
+					
+						String strOp3 = JOptionPane.showInputDialog("Escolha uma opção:\n"
 								+ "1 - Carro já cadastrado\n"
 								+ "2 - Cadastrar novo carro\n"
 								+ "0 - Voltar\n");
@@ -89,14 +85,7 @@ public class Principal {
 								break;
 							}
 							
-							case 0: {
-								JOptionPane.showMessageDialog(null, "Até mais!");
-								break;
-							}
-						
 						}
-						
-					}while(op3 != 0);
 					
 					break;
 				}
