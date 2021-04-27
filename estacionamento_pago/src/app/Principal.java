@@ -1,6 +1,7 @@
 package app;
 
 import javax.swing.JOptionPane;
+import cobranca.Valores;
 
 public class Principal {
 
@@ -16,11 +17,10 @@ public class Principal {
 				+ "1 - Para usuário Mensalista já cadastrado\n"
 				+ "2 - Para novo usuário Mensalista\n"
 				+ "3 - Entrada Simples\n"
-				+ "0 - Encerrar Programa\n";
-		
+				+ "0 - Encerrar Programa\n";	
 		do { 
 			
-			String strOpcao = JOptionPane.showInputDialog(null, menu);
+			String strOpcao = JOptionPane.showInputDialog(menu);
 			opcao = Integer.parseInt(strOpcao);
 			
 			switch(opcao) {
@@ -29,7 +29,7 @@ public class Principal {
 					//Usuário Mensalista já cadastrado
 					int op1;
 					do {
-						String strOp1 = JOptionPane.showInputDialog(null, "Escolha uma opção:"
+						String strOp1 = JOptionPane.showInputDialog("Escolha uma opção:"
 								+ "1 - Carro já cadastrado"
 								+ "2 - Cadastrar novo carro"
 								+ "0 - Voltar");
@@ -69,7 +69,7 @@ public class Principal {
 					//Entrada Simples
 					int op3;
 					do {
-						String strOp3 = JOptionPane.showInputDialog(null, "Escolha uma opção:"
+						String strOp3 = JOptionPane.showInputDialog("Escolha uma opção:"
 								+ "1 - Carro já cadastrado"
 								+ "2 - Cadastrar novo carro"
 								+ "0 - Voltar");
@@ -90,7 +90,7 @@ public class Principal {
 							}
 							
 							case 0: {
-								//Voltar
+								JOptionPane.showMessageDialog(null, "Até mais!");
 								break;
 							}
 						
@@ -112,4 +112,5 @@ public class Principal {
 		}while(opcao != 0);
 	
 	}
+
 }
