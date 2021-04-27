@@ -12,14 +12,18 @@ public class Principal {
 		int opcao = 0;
 		
 		do { 
-			String menu = "Veículo e/ou pessoa cadastrada?";
+			String menu = "Selecione uma opção:"
+					+ "1 - Para usuário Mensalista já cadastrado"
+					+ "2 - Para novo usuário Mensalista"
+					+ "3 - Entrada Simples"
+					+ "0 - Encerrar Programa";
 			
 			String strOpcao = JOptionPane.showInputDialog(null, menu);
 			opcao = Integer.parseInt(strOpcao);
 			
 			switch(opcao) {
 				
-				case 0: {
+				case 1: {
 					//Usuário Mensalista já cadastrado
 					
 					//Carro já cadastrado?
@@ -32,7 +36,7 @@ public class Principal {
 					break;
 				}
 			
-				case 1: {
+				case 2: {
 					//Novo usuário Mensalista
 					
 					//1 - Cadastrar usuário 
@@ -42,7 +46,7 @@ public class Principal {
 					break;
 				}
 				
-				case 2: {
+				case 3: {
 					//Entrada Simples
 					
 					//Carro já cadastrado?
@@ -56,10 +60,13 @@ public class Principal {
 					//3 - Calcular Valor
 					break;
 				}
-			
+				case 0:{
+					//Encerrar programa;
+					break;
+				}
 			}
 			
-		}while(opcao != 2);
+		}while(opcao != 0);
 	
 	}
 }
