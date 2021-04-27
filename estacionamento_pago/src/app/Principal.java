@@ -13,9 +13,9 @@ public class Principal {
 		
 		int opcao = 0;
 		
-		String menu = "Selecione uma opÁ„o:\n"
-				+ "1 - Para usu·rio Mensalista j· cadastrado\n"
-				+ "2 - Para novo usu·rio Mensalista\n"
+		String menu = "Selecione uma opc√£o:\n"
+				+ "1 - Para usu√°rio Mensalista j√° cadastrado\n"
+				+ "2 - Para novo usu√°rio Mensalista\n"
 				+ "3 - Entrada Simples\n"
 				+ "0 - Encerrar Programa\n";	
 		do { 
@@ -26,23 +26,23 @@ public class Principal {
 			switch(opcao) {
 				
 				case 1: {
-					//Usu·rio Mensalista j· cadastrado
+					//Usu√°rio Mensalista j√° cadastrado
 					int op1;
-						String strOp1 = JOptionPane.showInputDialog("Escolha uma opÁ„o:\n"
-								+ "1 - Carro j· cadastrado\n"
+						String strOp1 = JOptionPane.showInputDialog("Escolha uma opc√£o:\n"
+								+ "1 - Carro j√° cadastrado\n"
 								+ "2 - Cadastrar novo carro\n"
 								+ "0 - Voltar\n");
 						op1 = Integer.parseInt(strOp1);
 						switch(op1) {
 							case 1: {
-								//1 - Buscar VeÌculo
-								//2 - Registrar hor·rio de entrada e de saÌda 
+								//1 - Buscar Ve√≠culo
+								//2 - Registrar hor√°rio de entrada e de sa√≠da 
 								break;
 							}
 						
 							case 2: {
-								//1 - Cadastrar VeÌculo
-								//2 - Registrar hor·rio de entrada e de saÌda 
+								//1 - Cadastrar Ve√≠culo
+								//2 - Registrar hor√°rio de entrada e de sa√≠da 
 								break;
 							}
 							
@@ -53,10 +53,10 @@ public class Principal {
 						}
 				}
 				case 2: {
-					//Novo usu·rio Mensalista
-					//1 - Cadastrar usu·rio 
+					//Novo usu√°rio Mensalista
+					//1 - Cadastrar usu√°rio 
 					//2 - Cadastrar carro(s)
-					//3 - Hor·rio de entrada e de saÌda
+					//3 - Hor√°rio de entrada e de sa√°da
 					//4 - Calcular Valor
 					break;
 				}
@@ -65,22 +65,22 @@ public class Principal {
 					//Entrada Simples
 					int op3;
 					
-						String strOp3 = JOptionPane.showInputDialog("Escolha uma opÁ„o:\n"
-								+ "1 - Carro j· cadastrado\n"
+						String strOp3 = JOptionPane.showInputDialog("Escolha uma op√ß√£o:\n"
+								+ "1 - Carro j√° cadastrado\n"
 								+ "2 - Cadastrar novo carro\n"
 								+ "0 - Voltar\n");
 						op3 = Integer.parseInt(strOp3);
 						switch(op3) {
 							case 1: {
-								//1 - Buscar VeÌculo
-								//2 - Registrar hor·rio de entrada e de saÌda 
+								//1 - Buscar Ve√≠culo
+								//2 - Registrar hor√°rio de entrada e de sa√≠da 
 								//3 - Calcular Valor
 								break;
 							}
 						
 							case 2: {
-								//1 - Cadastrar VeÌculo
-								//2 - Registrar hor·rio de entrada e de saÌda 
+								//1 - Cadastrar Ve√≠culo
+								//2 - Registrar hor√°rio de entrada e de sa√≠oda 
 								//3 - Calcular Valor
 								break;
 							}
@@ -91,11 +91,11 @@ public class Principal {
 				}
 				case 0: {
 					//Encerrar programa;
-					JOptionPane.showMessageDialog(null, "AtÈ mais!");
+					JOptionPane.showMessageDialog(null, "At√© mais!");
 					break;
 				}
 				default:
-					JOptionPane.showMessageDialog(null, "OpÁ„o inv·lida, escolha uma das opÁıes disponÌveis!");
+					JOptionPane.showMessageDialog(null, "Op√ß√£o inv√°lida, escolha uma das op√ß√µes dispon√≠veis!");
 			}
 			
 		}while(opcao != 0);
