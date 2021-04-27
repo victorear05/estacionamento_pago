@@ -5,8 +5,8 @@ Professor:
 André Luiz Peron Martins Lanna  
   
 Alunos:  
-Victor Eduardo Araújo Ribeiro - 190038926  
-Ricardo de Castro Loureiro - 200043111
-XX-XX  
+Victor Eduardo Araújo Ribeiro - 190038926
+XX-XX
+XX-XX
 XX-XX  
 XX-XX  
