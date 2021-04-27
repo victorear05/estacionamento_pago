@@ -29,7 +29,6 @@ public class Principal {
 					//Não:
 					//1 - Cadastrar Veículo
 					//2 - Registrar horário de entrada e de saída 
-					JOptionPane.showMessageDialog(null, "caso um!");
 					break;
 				}
 			
@@ -40,7 +39,6 @@ public class Principal {
 					//2 - Cadastrar carro(s)
 					//3 - Horário de entrada e de saída
 					//4 - Calcular Valor
-					JOptionPane.showMessageDialog(null, "caso dois!");
 					break;
 				}
 				
