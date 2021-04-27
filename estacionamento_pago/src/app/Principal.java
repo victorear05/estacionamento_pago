@@ -15,9 +15,9 @@ public class Principal {
 		int opcao = 0;
 		
 		String menu = "Selecione uma opcão:\n"
-				+ "1 - Para usuário Mensalista já cadastrado\n"
-				+ "2 - Para novo usuário Mensalista\n"
-				+ "3 - Entrada Simples\n"
+				+ "1 - Primeiro Acesso\n"
+				+ "2 - Buscar Registro do Veículo\n"
+				+ "3 - Veículo de Mensalistas\n"
 				+ "0 - Encerrar Programa\n";	
 		do { 
 			
@@ -27,68 +27,54 @@ public class Principal {
 			switch(opcao) {
 				
 				case 1: {
-					//Usuário Mensalista já cadastrado
-					int op1;
-						String strOp1 = JOptionPane.showInputDialog("Escolha uma opcão:\n"
-								+ "1 - Carro já cadastrado\n"
-								+ "2 - Cadastrar novo carro\n"
-								+ "0 - Voltar\n");
-						op1 = Integer.parseInt(strOp1);
-						switch(op1) {
-							case 1: {
-								//1 - Buscar Veículo
-								//2 - Registrar horário de entrada e de saída 
-								break;
-							}
-						
-							case 2: {
-								//1 - Cadastrar Veículo
-								//2 - Registrar horário de entrada e de saída 
-								break;
-							}
-							
-							case 0: {
-								//Voltar
-								break;
-							}
-						}
+					//primeiro acesso
+						String strMarca = JOptionPane.showInputDialog("Cadastre o seu veículo:\n"
+								+ "Marca:\n");
+						String strModelo = JOptionPane.showInputDialog("Modelo:\n");
+						String strNPlaca = JOptionPane.showInputDialog("Número da Placa:\n");
+
+						//cadastroPA(String strMarca, String strModelo, String strNPlaca);
+						break;				
 				}
 				case 2: {
-					//Novo usuário Mensalista
-					//1 - Cadastrar usuário 
-					//2 - Cadastrar carro(s)
-					//3 - Horário de entrada e de saáda
-					//4 - Calcular Valor
-					break;
+					int op2;
+
+					String strOp2 = JOptionPane.showInputDialog("Escolha uma opção:\n"
+							+ "1 - Acrescentar novo acesso\n"
+							+ "2 - Pagamento\n"
+							+ "0 - Voltar\n");
+				op2 = Integer.parseInt(strOp2);
+					switch(op2){
+						case 1:
+						//acrescentar acesso
+						break;
+
+						case 2:
+						//pagamento
+						break;
+					}
+					
 				}
 				
 				case 3: {
-					//Entrada Simples
 					int op3;
+
+					String strOp3 = JOptionPane.showInputDialog("Escolha uma opção:\n"
+							+ "1 - Buscar Registro do veículo de mensalista\n"
+							+ "2 - Cadastrar novo usuário mensalista\n"
+							+ "0 - Voltar\n");
+				op3 = Integer.parseInt(strOp3);
 					
-						String strOp3 = JOptionPane.showInputDialog("Escolha uma opção:\n"
-								+ "1 - Carro já cadastrado\n"
-								+ "2 - Cadastrar novo carro\n"
-								+ "0 - Voltar\n");
-						op3 = Integer.parseInt(strOp3);
-						switch(op3) {
-							case 1: {
-								//1 - Buscar Veículo
-								//2 - Registrar horário de entrada e de saída 
-								//3 - Calcular Valor
-								break;
-							}
-						
-							case 2: {
-								//1 - Cadastrar Veículo
-								//2 - Registrar horário de entrada e de saíoda 
-								//3 - Calcular Valor
-								break;
-							}
-							
-						}
-					
+				switch(op3){
+					case 1:
+					//buscar registro mensalista
 					break;
+
+					case 2:
+					//cadastrar usuário mensalista
+					break;
+				}
+
 				}
 				case 0: {
 					//Encerrar programa;
