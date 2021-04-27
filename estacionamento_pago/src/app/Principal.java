@@ -30,9 +30,9 @@ public class Principal {
 					int op1;
 					do {
 						String strOp1 = JOptionPane.showInputDialog("Escolha uma opção:"
-								+ "1 - Carro já cadastrado"
-								+ "2 - Cadastrar novo carro"
-								+ "0 - Voltar");
+								+ "1 - Carro já cadastrado\n"
+								+ "2 - Cadastrar novo carro\n"
+								+ "0 - Voltar\n");
 						op1 = Integer.parseInt(strOp1);
 						switch(op1) {
 							case 1: {
@@ -70,9 +70,9 @@ public class Principal {
 					int op3;
 					do {
 						String strOp3 = JOptionPane.showInputDialog("Escolha uma opção:"
-								+ "1 - Carro já cadastrado"
-								+ "2 - Cadastrar novo carro"
-								+ "0 - Voltar");
+								+ "1 - Carro já cadastrado\n"
+								+ "2 - Cadastrar novo carro\n"
+								+ "0 - Voltar\n");
 						op3 = Integer.parseInt(strOp3);
 						switch(op3) {
 							case 1: {
