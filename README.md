@@ -9,7 +9,5 @@ André Luiz Peron Martins Lanna
 Alunos:  
 Victor Eduardo Araújo Ribeiro - 190038926  
 Ricardo de Castro Loureiro - 200043111  
-Philipe de Sousa Barros - 170154319  
-XX-XX  
-XX-XX  
-
+João Eduardo -  
+Levi Queiroz -  
