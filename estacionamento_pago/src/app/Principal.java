@@ -2,12 +2,12 @@ package app;
 
 import javax.swing.JOptionPane;
 import cobranca.Valores;
-import cadastros.CadastrarPessoaFisica;
+import cadastros.CadastroPessoaFisica;
 
 public class Principal {
 
 	public static void main(String[] args) {
-		menu();
+		menu(); 	
 	}
 	
 	public static void menu() {
