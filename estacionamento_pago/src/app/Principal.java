@@ -15,20 +15,20 @@ public class Principal {
 		//Implementar menu
 	}
 	
-	public void cadastrarVeiculo() {
+	public static void cadastrarVeiculo() {
 		//Implementar Cadastros de Veículos
 	}
 	
-	public void cadastrarMensalista() {
+	public static void cadastrarMensalista() {
 		//Implementar Cadastros de Mensalistas
 	}
 	
-	public Veiculo pesquisarVeiculo(String placa) {
+	public static Veiculo pesquisarVeiculo(String placa) {
 		//Implementar Pesquisas de Veiculos
 		return cadV[0];
 	}
 
-	public Mensalista pesquisarMensalista(String cpf) {
+	public static Mensalista pesquisarMensalista(String cpf) {
 		//Implementar Pesquisas de Mensalistas
 		return cadM[0];
 	}

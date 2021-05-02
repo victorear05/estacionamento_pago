@@ -23,5 +23,5 @@ public class Mensalista {
 	public void cadastrarVeiculo() {
 		//Implementar cadastrar veiculo
 	}
-
+	
 }
