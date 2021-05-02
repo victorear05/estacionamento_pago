@@ -1,6 +1,6 @@
 package cadastros;
 
-import java.time.*;
+import java.time.*; 
 import valores.*;
 
 public class Veiculo {
@@ -34,7 +34,7 @@ public class Veiculo {
 		
 		if(mensalista == true) {
 			p[0] = new FMensalista(duracao_m);
-		}else if (duracao_m == 0) {   //Implementar condição do if para caso seja pernoite
+		}else if (duracao_m == 0) {  			 //Implementar condição do if para caso seja pernoite
 			p[0] = new FPernoite(duracao_m);
 		}else if (duracao_m < 15) {
 			p[0] = new FMinuto(duracao_m);

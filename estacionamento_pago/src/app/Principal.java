@@ -1,6 +1,5 @@
 package app;
 
-import javax.swing.JOptionPane; 
 import cadastros.*;
 
 public class Principal {

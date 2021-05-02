@@ -2,7 +2,6 @@ package valores;
 
 public class FDiaria extends Valores {
 	
-	
 	public FDiaria(long tempoMin) {
 		super(tempoMin);
 	}
