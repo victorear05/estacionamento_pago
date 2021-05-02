@@ -10,4 +10,4 @@ Ricardo de Castro Loureiro - 200043111
 João Eduardo -  
 Levi Queiroz -  
   
-[Diagrama de Classes](https://drive.google.com/file/d/1tojmaQLHBeqHPTwzbn8UvEA_vBSlfJyB/view?usp=sharing)  
+[Diagrama de Classes em UML](https://drive.google.com/file/d/1tojmaQLHBeqHPTwzbn8UvEA_vBSlfJyB/view?usp=sharing)  
