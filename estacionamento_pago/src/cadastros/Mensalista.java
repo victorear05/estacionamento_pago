@@ -1,5 +1,7 @@
 package cadastros;
 
+import app.Principal;
+
 public class Mensalista {
 
 	Veiculo cadVM[] = new Veiculo[0];
@@ -8,7 +10,7 @@ public class Mensalista {
 	protected String endereco;
 	protected String celular;
 	protected String telefone;
-	protected String CNH;
+	public String CNH;
 	
 	public Mensalista(String nome, String endereco, String celular, String telefone, String CNH) {
 		
@@ -21,7 +23,7 @@ public class Mensalista {
 	}
 	
 	public void cadastrarVeiculo() {
-		//Implementar cadastrar veiculo
+		Principal.cadastrarVeiculo(this);
 	}
 	
 }
