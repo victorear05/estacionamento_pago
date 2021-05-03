@@ -11,7 +11,6 @@ João Eduardo -
 <<<<<<< HEAD
 Levi Queiroz -  
 =======
-Levi Queiroz - 170108341 
->>>>>>> refs/remotes/origin/main
+Levi Queiroz - 170108341  
   
 [Diagrama de Classes em UML](https://drive.google.com/file/d/1tojmaQLHBeqHPTwzbn8UvEA_vBSlfJyB/view?usp=sharing)  
