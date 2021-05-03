@@ -15,31 +15,31 @@ public class Principal {
 		//Implementar menu
 	}
 	
+	public static void cadastrarMensalista() {
+		//Implementar Cadastros de Mensalistas
+	}
+	
 	public static void cadastrarVeiculo() {
 		//Implementar Cadastros de Veículos
 	}
 	
-	public static void cadastrarMensalista() {
-		//Implementar Cadastros de Mensalistas
+	public static Mensalista pesquisarMensalista(String CPF) {
+		//Implementar Pesquisas de Veiculos
+		return cadM[0];
 	}
 	
 	public static Veiculo pesquisarVeiculo(String placa) {
 		//Implementar Pesquisas de Veiculos
 		return cadV[0];
 	}
-
-	public static Mensalista pesquisarMensalista(String cpf) {
-		//Implementar Pesquisas de Mensalistas
-		return cadM[0];
-	}
 	
-	public static boolean ExcluirVeiculo() {
+	public static boolean ExcluirMensalista() {
 		//Implementar Exclusão de Veiculos
 		return true;
 	}
 	
-	public static boolean ExcluirMensalista() {
-		//Implementar Exclusão de Mensalistas
+	public static boolean ExcluirVeiculo() {
+		//Implementar Exclusão de Veiculos
 		return true;
 	}
 }

@@ -4,13 +4,13 @@ public class Mensalista {
 
 	Veiculo cadVM[] = new Veiculo[0];
 	
-	String nome;
-	String endereco;
-	String celular;
-	String telefone;
-	int CNH;
+	protected String nome;
+	protected String endereco;
+	protected String celular;
+	protected String telefone;
+	protected String CNH;
 	
-	public Mensalista(String nome, String endereco, String celular, String telefone, int CNH) {
+	public Mensalista(String nome, String endereco, String celular, String telefone, String CNH) {
 		
 		this.nome = nome;
 		this.endereco = endereco;

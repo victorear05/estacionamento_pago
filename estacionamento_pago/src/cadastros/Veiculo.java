@@ -7,15 +7,15 @@ public class Veiculo {
 	
 	Valores p[] = new Valores[0];
 	
-	String marca;
-	String modelo;
-	String placa;
-	LocalDateTime entrada;
-	LocalDateTime saida;
-	boolean mensalista;
-	double preco = calcularPreco();
+	protected String marca;
+	protected String modelo;
+	protected String placa;
+	protected LocalDateTime entrada;
+	protected LocalDateTime saida;
+	protected boolean mensalista;
+	protected double preco = calcularPreco();
 	
-	public Veiculo(String marca, String modelo, String placa, LocalDateTime entrada, LocalDateTime saida, boolean mensalista) {
+	private Veiculo(String marca, String modelo, String placa, LocalDateTime entrada, LocalDateTime saida, boolean mensalista) {
 		
 		this.marca = marca;
 		this.modelo = modelo;
@@ -45,7 +45,7 @@ public class Veiculo {
 		}else if(duracao_h >= 9) {
 			p[0] = new FDiaria(duracao_m);
 		}
-			
+		
 		return p[0].calculoDoValor();
 	}
 	
