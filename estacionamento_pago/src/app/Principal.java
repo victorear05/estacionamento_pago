@@ -19,8 +19,8 @@ public class Principal {
 		int opcao = 0;
 		
 		String menu = "Digite a opção desejada:\n"
-				+ "1 - Nova entrada simples\n" 		//OK
-				+ "2 - Entrada de mensalista\n"		//OK
+				+ "1 - Nova entrada simples\n" 		
+				+ "2 - Entrada de mensalista\n"		
 				+ "0 - Encerrar Programa\n";
 		do { 
 			String strOpcao = JOptionPane.showInputDialog(menu);
