@@ -1,16 +1,14 @@
 package cadastros;
 
-import app.Principal;
-
 public class Mensalista {
 
-	Veiculo cadVM[] = new Veiculo[0];
+	private Veiculo cadVM[] = new Veiculo[0];
 	
-	protected String nome;
-	protected String endereco;
-	protected String celular;
-	protected String telefone;
-	public String CNH;
+	private String nome;
+	private String endereco;
+	private String celular;
+	private String telefone;
+	private String CNH;
 	
 	public Mensalista(String nome, String endereco, String celular, String telefone, String CNH) {
 		
@@ -22,8 +20,28 @@ public class Mensalista {
 	
 	}
 	
-	public void cadastrarVeiculo() {
-		Principal.cadastrarVeiculo(this);
+	public Veiculo[] getCadVM() {
+		return cadVM;
+	}
+	
+	public String getCNH() {
+		return CNH;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+	
+	public String getTelefone() {
+		return telefone;
+	}
+	
+	public String getEndereco() {
+		return endereco;
+	}
+	
+	public String getCelular() {
+		return celular;
 	}
 	
 }

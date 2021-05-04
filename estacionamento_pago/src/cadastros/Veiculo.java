@@ -2,10 +2,10 @@ package cadastros;
 
 public class Veiculo {
 	
-	protected String marca;
-	protected String modelo;
-	public String placa;
-	protected Mensalista mensalista;
+	private String marca;
+	private String modelo;
+	private String placa;
+	private Mensalista mensalista;
 	
 	public Veiculo(String marca, String modelo, String placa, Mensalista mensalista) {
 		
@@ -15,4 +15,21 @@ public class Veiculo {
 		this.mensalista = mensalista;
 		
 	}
+
+	public String getMarca() {
+		return marca;
+	}
+
+	public String getModelo() {
+		return modelo;
+	}
+
+	public String getPlaca() {
+		return placa;
+	}
+
+	public Mensalista getMensalista() {
+		return mensalista;
+	}
+
 }
