@@ -192,5 +192,15 @@ public class Principal {
 		else
 			JOptionPane.showMessageDialog(null, "Usuário não encontrado!");
 	}
-
+	
+	public void imprimiAcessos() {
+		for(int i = 0;i < aces.length;i++) {
+			JOptionPane.showMessageDialog(null, aces[i].getV().getMarca() + "\n" 
+											  + aces[i].getV().getModelo() + "\n" 
+											  + aces[i].getV().getPlaca() + "\n"
+											  + aces[i].getEntrada() + "\n"
+											  + aces[i].getSaida() + "\n"
+											  + aces[i].getPreco());
+		}
+	}
 }

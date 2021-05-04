@@ -6,12 +6,12 @@ import valores.*;
 
 public class Acessos {
 	
-	Valores p[] = new Valores[0];
+	private Valores p[] = new Valores[0];
 	
-	Veiculo v;
-	LocalDateTime entrada;
-	LocalDateTime saida;
-	double preco = calcularPreco();
+	private Veiculo v;
+	private LocalDateTime entrada;
+	private LocalDateTime saida;
+	private double preco;
 	
 	public Acessos(Veiculo v, LocalDateTime entrada, LocalDateTime saida) {
 		
@@ -21,13 +21,13 @@ public class Acessos {
 		
 	}
 
-	public double calcularPreco() {
+	public void calcularPreco() {
 		
 		Duration duracao = Duration.between(entrada, saida);
 		long duracao_h = duracao.toHours();
 		long duracao_m = duracao.toMinutes();
 		
-		if(v.mensalista != null) {
+		if(v.getMensalista() != null) {
 			p[0] = new FMensalista(duracao_m);
 		}else if (duracao_m == 0) {  			 //Implementar condição do if para caso seja pernoite
 			p[0] = new FPernoite(duracao_m);
@@ -41,6 +41,27 @@ public class Acessos {
 			p[0] = new FDiaria(duracao_m);
 		}
 		
-		return p[0].calculoDoValor();
+		setPreco(p[0].calculoDoValor());
 	}
+
+	public void setPreco(double preco) {
+		this.preco = preco;
+	}
+
+	public double getPreco() {
+		return preco;
+	}
+	
+	public Veiculo getV() {
+		return v;
+	}
+
+	public LocalDateTime getEntrada() {
+		return entrada;
+	}
+
+	public LocalDateTime getSaida() {
+		return saida;
+	}
+
 }
