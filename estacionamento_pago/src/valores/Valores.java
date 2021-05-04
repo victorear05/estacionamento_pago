@@ -2,7 +2,7 @@ package valores;
 
 public abstract class Valores {
 	
-	long tempoMin;
+	public long tempoMin;
 	
 	public Valores(long tempoMin) {
 		this.tempoMin = tempoMin;
