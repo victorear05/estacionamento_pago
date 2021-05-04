@@ -56,8 +56,9 @@ public class Principal {
 				case 2: {
 					int op;
 
-					String Menu = ("Para veículo já cadastrado, digite 1\n"
-							+ "Para cadastrar um novo veículo, digite 2\n");
+					String Menu = ("Para usuário já cadastrado, digite 1\n"
+							+ "Para cadastrar um novo usuário, digite 2\n"
+							+ "Para cadastar um novo veículo de mensalista, digite 3\n");
 					String strOp = JOptionPane.showInputDialog(Menu);
 					op = Integer.parseInt(strOp);
 					switch(op){
@@ -70,6 +71,16 @@ public class Principal {
 							cadastrarMensalista();
 							break;
 						}
+						
+						case 3: {
+							Mensalista M;
+							String CNH;
+							CNH = JOptionPane.showInputDialog("Digite a CNH a ser buscada:");
+							M = pesquisarMensalista(CNH);
+							cadastrarVeiculoM(M);
+							break;
+						}
+						
 						default: {
 							JOptionPane.showMessageDialog(null, "Opção inválida, voltando ao menu!");
 							break;				
@@ -137,6 +148,14 @@ public class Principal {
 		for(int i = 0; i < cadM.length; i++) {
 			if(placa == cadV[i].getPlaca())
 				return cadV[0];
+		}
+		return null;	
+	}
+	
+	public static Mensalista pesquisarMensalista(String CNH) {
+		for(int i = 0; i < cadM.length; i++) {
+			if(CNH == cadM[i].getCNH())
+				return cadM[0];
 		}
 		return null;	
 	}
