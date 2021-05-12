@@ -78,14 +78,31 @@ public class Principal {
 						String Menu = "Digite a opção desejada:\n"
 								+ "1 - Para usuário já cadastrado\n"
 								+ "2 - Para cadastrar um novo usuário\n"
-								+ "3 - Para cadastar um novo veículo de mensalista\n"
 								+ "0 - Para voltar ao Menu Principal\n";
 						String strOp = JOptionPane.showInputDialog(Menu);
 						op = Integer.parseInt(strOp);
 						switch(op){
 							case 1: {
-								pesquisarVMensalista();
-								op = 0;
+								Veiculo v = null;
+								String CNH = JOptionPane.showInputDialog("Digite a CNH a ser buscada:");
+								Mensalista M = pesquisarMensalista(CNH);
+								if(M != null) {
+									int opc = 0;
+									String strOpc= JOptionPane.showInputDialog("Digite a opção desejada:"
+																			 + "1 - Para pesquisar veículo já cadastrado"
+																			 + "2 - Para cadastrar .novo veículo");
+									opc = Integer.parseInt(strOpc);
+									if(opc == 1) {
+										v = pesquisarVMensalista(M);
+										novoAcesso(v);	
+									}
+									if(opc == 2)
+										v = cadastrarVeiculoM(M);
+									
+									op = 0;
+								}
+								else
+									JOptionPane.showInputDialog("Usuário não encontrado!");	
 								break;	
 							}
 	
@@ -95,15 +112,6 @@ public class Principal {
 								break;
 							}
 							
-							case 3: {
-								Mensalista M;
-								String CNH;
-								CNH = JOptionPane.showInputDialog("Digite a CNH a ser buscada:");
-								M = pesquisarMensalista(CNH);
-								cadastrarVeiculoM(M);
-								op = 0;
-								break;
-							}
 							case 0: {
 								break;
 							}
@@ -135,7 +143,7 @@ public class Principal {
 		}while(opcao != 0);
 	}
 	
-	public static void cadastrarVeiculoM(Mensalista mensalista) {
+	public static Veiculo cadastrarVeiculoM(Mensalista mensalista) {
 		//Registrando Veículo:
 		String Marca = JOptionPane.showInputDialog("Marca:\n");
 		String Modelo = JOptionPane.showInputDialog("Modelo:\n");
@@ -151,7 +159,7 @@ public class Principal {
 		
 		//Registrando Acesso: 
 		novoAcesso(v);
-	
+		return v;
 	}
 	
 	public static void cadastrarMensalista() {
@@ -209,38 +217,27 @@ public class Principal {
 		aces = tempA;
 	}
 	
-	public static void pesquisarVMensalista() {
+	public static Veiculo pesquisarVMensalista(Mensalista M) {
 		
-		Mensalista M = null;
-		String CNH;
-		int i= 0;
-		CNH = JOptionPane.showInputDialog("Digite o CPF do usuário para busca");
-		while(i < cadM.length) {
-			if(CNH == cadM[i].getCNH())
-				M = cadM[i];
-			else	
-				i++;
-		}	
-		if(M != null) {
-			Veiculo VM[] = M.getCadVM();
-			if(VM.length > 0) {
-				int opV;
-				for(i = 0; i < VM.length; i++)
-					JOptionPane.showMessageDialog(null,"Veículo " + i + ": \n"  
-													  +	"Marca: " + VM[i].getMarca() + "\n"
-													  + "Modelo: " + VM[i].getModelo()+ "\n"
-													  + "Placa: " + VM[i].getPlaca());
-				
-				String strOpV = JOptionPane.showInputDialog("Para qual carro deseja registrar um acesso?");
+		Veiculo VM[] = M.getCadVM();
+		Veiculo v = null;
+		if(VM.length > 0) {
+			int opV;
+			for(int i = 0; i < VM.length; i++)
+				JOptionPane.showMessageDialog(null,"Veículo " + i + ": \n"  
+												  +	"Marca: " + VM[i].getMarca() + "\n"
+												  + "Modelo: " + VM[i].getModelo()+ "\n"
+												  + "Placa: " + VM[i].getPlaca());
+				String strOpV = JOptionPane.showInputDialog("Para qual carro deseja registrar o acesso?");
 				opV = Integer.parseInt(strOpV);
-				novoAcesso(VM[opV]);
-				JOptionPane.showMessageDialog(null, "Acesso Registrado!");
+				if(opV >= VM.length)
+					JOptionPane.showMessageDialog(null, "Veiculo Inválido!");
+				else
+					v = VM[opV];
 			}
 			else
 				JOptionPane.showMessageDialog(null, "Usuário não possui veículos cadastrados");
-		}
-		else
-			JOptionPane.showMessageDialog(null, "Usuário não encontrado!");
+		return v;
 	}
 	
 	public static void imprimeAcessos() {
