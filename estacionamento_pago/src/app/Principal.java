@@ -23,6 +23,7 @@ public class Principal {
 		String menu = "Digite a opção desejada:\n"
 				+ "1 - Nova entrada simples\n" 		
 				+ "2 - Entrada de mensalista\n"		
+				+ "3 - Listar todos os Acessos\n"
 				+ "0 - Encerrar Programa\n";
 		do { 
 			String strOpcao = JOptionPane.showInputDialog(menu);
@@ -31,65 +32,104 @@ public class Principal {
 			switch(opcao) {
 				
 				case 1: {
-					int op;
-					String Menu = "Para veículo já cadastrado, digite 1\n"
-							+ "Para cadastrar um novo veículo, digite 2\n";		
-					String strOp = JOptionPane.showInputDialog(Menu);				
-					op = Integer.parseInt(strOp);
-					switch (op){
-						case 1: {
-							String placa;
-							placa = JOptionPane.showInputDialog("Digite a placa do veículo para busca");
-							Veiculo v = pesquisarVeiculo(placa);
-							novoAcesso(v);
-							break;
+					int op = 0;
+					do {
+						String Menu = "Digite a opção desejada:\n" 
+								+ "1 - Para veículo já cadastrado\n"
+								+ "2 - Para cadastrar um novo veículo\n"
+								+ "0 - Para voltar ao Menu Principal\n";		
+						String strOp = JOptionPane.showInputDialog(Menu);				
+						op = Integer.parseInt(strOp);
+						switch (op){
+							case 1: {
+								String placa;
+								placa = JOptionPane.showInputDialog("Digite a placa do veículo para busca");
+								Veiculo v = pesquisarVeiculo(placa);
+								if (v != null)
+									novoAcesso(v);
+								else
+									JOptionPane.showMessageDialog(null, "Veículo não encontrado!");
+								op = 0;
+								break;
+							}
+							
+							case 2: {
+								cadastrarVeiculoM(null);
+								op = 0;
+								break;
+							}
+							
+							case 0: {
+								break;
+							}
+							
+							default: {
+								JOptionPane.showMessageDialog(null, "Opção inválida, por favor selecione uma opção válida!\n");
+								break;				
+							}
 						}
-						case 2: {
-							cadastrarVeiculoM(null);
-							break;
-						}
-						default: {
-							JOptionPane.showMessageDialog(null, "Opção inválida!\n");
-							break;				
-						}
-					}
+					}while(op != 0);
+					break;
 				}
 				
 				case 2: {
-					int op;
-
-					String Menu = ("Para usuário já cadastrado, digite 1\n"
-							+ "Para cadastrar um novo usuário, digite 2\n"
-							+ "Para cadastar um novo veículo de mensalista, digite 3\n");
-					String strOp = JOptionPane.showInputDialog(Menu);
-					op = Integer.parseInt(strOp);
-					switch(op){
-						case 1: {
-							pesquisarVMensalista();
-							break;	
-						}
-
-						case 2: {
-							cadastrarMensalista();
-							break;
-						}
-						
-						case 3: {
-							Mensalista M;
-							String CNH;
-							CNH = JOptionPane.showInputDialog("Digite a CNH a ser buscada:");
-							M = pesquisarMensalista(CNH);
-							cadastrarVeiculoM(M);
-							break;
-						}
-						
-						default: {
-							JOptionPane.showMessageDialog(null, "Opção inválida, voltando ao menu!");
-							break;				
-						}
-					}	
+					int op = 0;
+					do {
+						String Menu = "Digite a opção desejada:\n"
+								+ "1 - Para usuário já cadastrado\n"
+								+ "2 - Para cadastrar um novo usuário\n"
+								+ "3 - Para cadastar um novo veículo de mensalista\n"
+								+ "0 - Para voltar ao Menu Principal\n";
+						String strOp = JOptionPane.showInputDialog(Menu);
+						op = Integer.parseInt(strOp);
+						switch(op){
+							case 1: {
+								pesquisarVMensalista();
+								op = 0;
+								break;	
+							}
+	
+							case 2: {
+								cadastrarMensalista();
+								op = 0;
+								break;
+							}
+							
+							case 3: {
+								Mensalista M;
+								String CNH;
+								CNH = JOptionPane.showInputDialog("Digite a CNH a ser buscada:");
+								M = pesquisarMensalista(CNH);
+								cadastrarVeiculoM(M);
+								op = 0;
+								break;
+							}
+							case 0: {
+								break;
+							}
+							
+							default: {
+								JOptionPane.showMessageDialog(null, "Opção inválida, por favor selecione uma opção válida!\n");
+								break;				
+							}
+						}	
+					}while(op != 0);
+					break;
 				}
 				
+				case 3: {
+					imprimeAcessos();
+					break;
+				}
+				
+				case 0: {
+					break;
+				}
+				
+				default: {
+					JOptionPane.showMessageDialog(null, "Opção inválida, por favor selecione uma opção válida!");
+					break;
+				}
 			}
 			
 		}while(opcao != 0);
@@ -106,7 +146,7 @@ public class Principal {
 		for(int i = 0; i < cadV.length;i++) {
 			tempV[i] = cadV[i];
 		}
-		tempV[tempV.length -1] = v;
+		tempV[tempV.length - 1] = v;
 		cadV = tempV;
 		
 		//Registrando Acesso: 
@@ -134,19 +174,20 @@ public class Principal {
 	}
 	
 	public static Veiculo pesquisarVeiculo(String placa) {
-		for(int i = 0; i < cadM.length; i++) {
-			if(placa == cadV[i].getPlaca())
-				return cadV[0];
-		}
-		return null;	
+		Veiculo v = null;
+		for(int i = 0; i < cadV.length; i++)
+			if((cadV[i].getPlaca()).equals(placa))
+				v = cadV[i];
+		return v;	
 	}
 	
 	public static Mensalista pesquisarMensalista(String CNH) {
+		Mensalista M = null;
 		for(int i = 0; i < cadM.length; i++) {
-			if(CNH == cadM[i].getCNH())
-				return cadM[0];
+			if(CNH.equals(cadM[i].getCNH())) 
+				M = cadM[i];
 		}
-		return null;	
+		return M;	
 	}
 
 	public static void novoAcesso(Veiculo v) {
@@ -202,14 +243,17 @@ public class Principal {
 			JOptionPane.showMessageDialog(null, "Usuário não encontrado!");
 	}
 	
-	public void imprimiAcessos() {
-		for(int i = 0;i < aces.length;i++) {
-			JOptionPane.showMessageDialog(null, aces[i].getV().getMarca() + "\n" 
-											  + aces[i].getV().getModelo() + "\n" 
-											  + aces[i].getV().getPlaca() + "\n"
-											  + aces[i].getEntrada() + "\n"
-											  + aces[i].getSaida() + "\n"
-											  + aces[i].getPreco());
+	public static void imprimeAcessos() {
+		if(aces.length != 0)
+			for(int i = 0;i < aces.length;i++) {
+				JOptionPane.showMessageDialog(null, aces[i].getV().getMarca() + "\n" 
+												  + aces[i].getV().getModelo() + "\n" 
+												  + aces[i].getV().getPlaca() + "\n"
+												  + aces[i].getEntrada() + "\n"
+												  + aces[i].getSaida() + "\n"
+												  + aces[i].getPreco());
 		}
+		else
+			JOptionPane.showMessageDialog(null,"Sem acessos!");
 	}
 }

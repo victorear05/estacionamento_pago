@@ -2,6 +2,9 @@ package cadastros;
 
 import java.time.Duration; 
 import java.time.LocalDateTime;
+
+import javax.swing.JOptionPane;
+
 import valores.*;
 
 public class Acessos {
@@ -18,7 +21,7 @@ public class Acessos {
 		this.v = v;
 		this.entrada = entrada;
 		this.saida = saida;
-		
+		calcularPreco();
 	}
 
 	public void calcularPreco() {
@@ -42,6 +45,7 @@ public class Acessos {
 			}else if(duracao_h < 9) {
 				preco = new FHora(duracao_m);
 			}else if(duracao_h >= 9) {
+				JOptionPane.showMessageDialog(null, duracao_m);
 				preco = new FDiaria(duracao_m);
 			}
 		}

@@ -7,8 +7,8 @@ public class FDiaria extends Valores {
 	}
 
 	public double calculoDoValor() {
-		double valor = (tempoMin - 540)* 0.2;
-		valor = 110 + valor;
+		tempoMin = tempoMin - 540;
+		double valor = 110 + (tempoMin * 0.2);
 		return valor;
 	}
 }
