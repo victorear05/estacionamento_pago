@@ -2,6 +2,8 @@ package app;
 
 import cadastros.*;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import javax.swing.JOptionPane;
 
 public class Principal {
@@ -108,12 +110,13 @@ public class Principal {
 		cadV = tempV;
 		
 		//Registrando Acesso: 
-		String DEntrada = JOptionPane.showInputDialog("Digite a data de entrada:\n");
-		String HEntrada = JOptionPane.showInputDialog("Digite a hora de entrada:\n");
-		String DSaida = JOptionPane.showInputDialog("Digite a data de saída:\n");
-		String HSaida = JOptionPane.showInputDialog("Digite a hora de saída:\n");
-		LocalDateTime entrada;
-		LocalDateTime saida;
+		String strEntrada = JOptionPane.showInputDialog("Digite a data e hora de entrada do veículo como no exemplo:\n" + "DD/MM/AAAA HH:MM");
+		String strSaida = JOptionPane.showInputDialog("Digite a data e hora de saída do veículo como no exemplo:\n" + "DD/MM/AAAA HH:MM");
+		
+		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+		
+		LocalDateTime entrada = LocalDateTime.parse(strEntrada, formato);
+		LocalDateTime saida = LocalDateTime.parse(strSaida, formato);
 		
 		Acessos A = new Acessos(v, entrada, saida);    	//Tranformar String em LocalDateTime
 		Acessos tempA[] = new Acessos[aces.length + 1];	
@@ -162,12 +165,13 @@ public class Principal {
 
 	public static void novoAcesso(Veiculo v) {
 		
-		String DEntrada = JOptionPane.showInputDialog("Digite a data de entrada:\n");
-		String HEntrada = JOptionPane.showInputDialog("Digite a hora de entrada:\n");
-		String DSaida = JOptionPane.showInputDialog("Digite a data de saída:\n");
-		String HSaida = JOptionPane.showInputDialog("Digite a hora de saída:\n");
-		LocalDateTime entrada;
-		LocalDateTime saida;
+		String strEntrada = JOptionPane.showInputDialog("Digite a data e hora de entrada do veículo como no exemplo:\n" + "DD/MM/AAAA HH:MM");
+		String strSaida = JOptionPane.showInputDialog("Digite a data e hora de saída do veículo como no exemplo:\n" + "DD/MM/AAAA HH:MM");
+		
+		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+		
+		LocalDateTime entrada = LocalDateTime.parse(strEntrada, formato);
+		LocalDateTime saida = LocalDateTime.parse(strSaida, formato);
 		
 		Acessos A = new Acessos(v, entrada, saida);		//Tranformar String em LocalDateTime
 		Acessos tempA[] = new Acessos[aces.length + 1];	
