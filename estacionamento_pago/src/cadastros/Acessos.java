@@ -1,12 +1,12 @@
 package cadastros;
 
-import java.time.Duration;
+import java.time.Duration; 
 import java.time.LocalDateTime;
 import valores.*;
 
 public class Acessos {
 	
-	private Valores p[] = new Valores[0];
+//	private Valores p[] = new Valores[0];
 	
 	private Veiculo v;
 	private LocalDateTime entrada;
@@ -27,21 +27,28 @@ public class Acessos {
 		long duracao_h = duracao.toHours();
 		long duracao_m = duracao.toMinutes();
 		
-		if(v.getMensalista() != null) {
-			p[0] = new FMensalista(duracao_m);
-		}else if (duracao_m == 0) {  			 //Implementar condição do if para caso seja pernoite
-			p[0] = new FPernoite(duracao_m);
-		}else if (duracao_m < 15) {
-			p[0] = new FMinuto(duracao_m);
-		}else if(duracao_m < 60) {
-			p[0] = new FQuinze(duracao_m);
-		}else if(duracao_h < 9) {
-			p[0] = new FHora(duracao_m);
-		}else if(duracao_h >= 9) {
-			p[0] = new FDiaria(duracao_m);
-		}
+		int DiaE = entrada.getDayOfMonth();
+		int DiaS = saida.getDayOfMonth();
 		
-		setPreco(p[0].calculoDoValor());
+		Valores preco = null;
+		
+		if(v.getMensalista() == null) {
+			if (DiaE != DiaS) {
+				preco = new FPernoite(duracao_m);
+			}else if (duracao_m < 15) {
+				preco = new FMinuto(duracao_m);
+			}else if(duracao_m < 60) {
+				preco = new FQuinze(duracao_m);
+			}else if(duracao_h < 9) {
+				preco = new FHora(duracao_m);
+			}else if(duracao_h >= 9) {
+				preco = new FDiaria(duracao_m);
+			}
+		}
+		else
+			preco = new FMensalista(duracao_m);
+		
+		setPreco(preco.calculoDoValor());
 	}
 
 	public void setPreco(double preco) {

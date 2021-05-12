@@ -7,8 +7,9 @@ public class FQuinze extends Valores {
 	}
 	
 	public double calculoDoValor() {
-		double valor;
-		valor = tempoMin * 0.5;
+		double valor = tempoMin * 0.5;
+		long t15 = tempoMin/15;
+		valor = valor - t15;
 		return valor;
 	}
 }

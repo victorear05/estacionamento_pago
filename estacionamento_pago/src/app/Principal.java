@@ -110,21 +110,7 @@ public class Principal {
 		cadV = tempV;
 		
 		//Registrando Acesso: 
-		String strEntrada = JOptionPane.showInputDialog("Digite a data e hora de entrada do veículo como no exemplo:\n" + "DD/MM/AAAA HH:MM");
-		String strSaida = JOptionPane.showInputDialog("Digite a data e hora de saída do veículo como no exemplo:\n" + "DD/MM/AAAA HH:MM");
-		
-		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-		
-		LocalDateTime entrada = LocalDateTime.parse(strEntrada, formato);
-		LocalDateTime saida = LocalDateTime.parse(strSaida, formato);
-		
-		Acessos A = new Acessos(v, entrada, saida);    	//Tranformar String em LocalDateTime
-		Acessos tempA[] = new Acessos[aces.length + 1];	
-		for(int i = 0; i < aces.length;i++) {
-			tempA[i] = aces[i];
-		}
-		tempA[tempA.length -1] = A;
-		aces = tempA;
+		novoAcesso(v);
 	
 	}
 	
