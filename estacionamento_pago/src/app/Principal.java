@@ -22,7 +22,7 @@ public class Principal {
 		
 		int opcao = 0;
 		
-		String menu = "Digite a opção desejada:\n"
+		String menu = "Digite a opï¿½ï¿½o desejada:\n"
 				+ "1 - Nova entrada simples\n" 		
 				+ "2 - Entrada de mensalista\n"		
 				+ "3 - Listar todos os Acessos\n"
@@ -36,21 +36,21 @@ public class Principal {
 				case 1: {
 					int op = 0;
 					do {
-						String Menu = "Digite a opção desejada:\n" 
-								+ "1 - Para veículo já cadastrado\n"
-								+ "2 - Para cadastrar um novo veículo\n"
+						String Menu = "Digite a opï¿½ï¿½o desejada:\n" 
+								+ "1 - Para veï¿½culo jï¿½ cadastrado\n"
+								+ "2 - Para cadastrar um novo veï¿½culo\n"
 								+ "0 - Para voltar ao Menu Principal\n";		
 						String strOp = JOptionPane.showInputDialog(Menu);				
 						op = Integer.parseInt(strOp);
 						switch (op){
 							case 1: {
 								String placa;
-								placa = JOptionPane.showInputDialog("Digite a placa do veículo para busca");
+								placa = JOptionPane.showInputDialog("Digite a placa do veï¿½culo para busca");
 								Veiculo v = pesquisarVeiculo(placa);
 								if (v != null)
 									novoAcesso(v);
 								else
-									JOptionPane.showMessageDialog(null, "Veículo não encontrado!");
+									JOptionPane.showMessageDialog(null, "Veï¿½culo nï¿½o encontrado!");
 								op = 0;
 								break;
 							}
@@ -66,7 +66,7 @@ public class Principal {
 							}
 							
 							default: {
-								JOptionPane.showMessageDialog(null, "Opção inválida, por favor selecione uma opção válida!\n");
+								JOptionPane.showMessageDialog(null, "Opï¿½ï¿½o invï¿½lida, por favor selecione uma opï¿½ï¿½o vï¿½lida!\n");
 								break;				
 							}
 						}
@@ -77,9 +77,9 @@ public class Principal {
 				case 2: {
 					int op = 0;
 					do {
-						String Menu = "Digite a opção desejada:\n"
-								+ "1 - Para usuário já cadastrado\n"
-								+ "2 - Para cadastrar um novo usuário\n"
+						String Menu = "Digite a opï¿½ï¿½o desejada:\n"
+								+ "1 - Para usuï¿½rio jï¿½ cadastrado\n"
+								+ "2 - Para cadastrar um novo usuï¿½rio\n"
 								+ "0 - Para voltar ao Menu Principal\n";
 						String strOp = JOptionPane.showInputDialog(Menu);
 						op = Integer.parseInt(strOp);
@@ -90,9 +90,9 @@ public class Principal {
 								Mensalista M = pesquisarMensalista(CNH);
 								if(M != null) {
 									int opc = 0;
-									String strOpc= JOptionPane.showInputDialog("Digite a opção desejada:"
-											+ "1 - Para pesquisar veículo já cadastrado"
-											+ "2 - Para cadastrar novo veículo");
+									String strOpc= JOptionPane.showInputDialog("Digite a opï¿½ï¿½o desejada:"
+											+ "1 - Para pesquisar veï¿½culo jï¿½ cadastrado"
+											+ "2 - Para cadastrar novo veï¿½culo");
 									opc = Integer.parseInt(strOpc);
 									if(opc == 1) {
 										v = pesquisarVMensalista(M);
@@ -104,7 +104,7 @@ public class Principal {
 									op = 0;
 								}
 								else
-									JOptionPane.showInputDialog("Usuário não encontrado!");	
+									JOptionPane.showMessageDialog(null, "Usuï¿½rio nï¿½o encontrado!");	
 								break;	
 							}
 	
@@ -119,7 +119,7 @@ public class Principal {
 							}
 							
 							default: {
-								JOptionPane.showMessageDialog(null, "Opção inválida, por favor selecione uma opção válida!\n");
+								JOptionPane.showMessageDialog(null, "Opï¿½ï¿½o invï¿½lida, por favor selecione uma opï¿½ï¿½o vï¿½lida!\n");
 								break;				
 							}
 						}	
@@ -137,7 +137,7 @@ public class Principal {
 				}
 				
 				default: {
-					JOptionPane.showMessageDialog(null, "Opção inválida, por favor selecione uma opção válida!");
+					JOptionPane.showMessageDialog(null, "Opï¿½ï¿½o invï¿½lida, por favor selecione uma opï¿½ï¿½o vï¿½lida!");
 					break;
 				}
 			}
@@ -146,10 +146,10 @@ public class Principal {
 	}
 	
 	public static Veiculo cadastrarVeiculoM(Mensalista mensalista) {
-		//Registrando Veículo:
+		//Registrando Veï¿½culo:
 		String Marca = JOptionPane.showInputDialog("Marca:\n");
 		String Modelo = JOptionPane.showInputDialog("Modelo:\n");
-		String NPlaca = JOptionPane.showInputDialog("Número da Placa:\n");
+		String NPlaca = JOptionPane.showInputDialog("Nï¿½mero da Placa:\n");
 		
 		Veiculo v = new Veiculo(Marca, Modelo, NPlaca, mensalista);
 		cadV.add(v);
@@ -190,8 +190,8 @@ public class Principal {
 
 	public static void novoAcesso(Veiculo v) {
 		
-		String strEntrada = JOptionPane.showInputDialog("Digite a data e hora de entrada do veículo como no exemplo:\n" + "DD/MM/AAAA HH:MM");
-		String strSaida = JOptionPane.showInputDialog("Digite a data e hora de saída do veículo como no exemplo:\n" + "DD/MM/AAAA HH:MM");
+		String strEntrada = JOptionPane.showInputDialog("Digite a data e hora de entrada do veï¿½culo como no exemplo:\n" + "DD/MM/AAAA HH:MM");
+		String strSaida = JOptionPane.showInputDialog("Digite a data e hora de saï¿½da do veï¿½culo como no exemplo:\n" + "DD/MM/AAAA HH:MM");
 		
 		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 		
