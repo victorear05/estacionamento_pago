@@ -1,9 +1,11 @@
 package cadastros;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class Mensalista {
 
-	private Veiculo cadVM[] = new Veiculo[0];
-	
+	List<Veiculo> cadVM = new LinkedList<Veiculo>();
 	private String nome;
 	private String endereco;
 	private String celular;
@@ -20,7 +22,7 @@ public class Mensalista {
 	
 	}
 	
-	public Veiculo[] getCadVM() {
+	public List<Veiculo> getCadVM() {
 		return cadVM;
 	}
 	

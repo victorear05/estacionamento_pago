@@ -9,8 +9,6 @@ import valores.*;
 
 public class Acessos {
 	
-//	private Valores p[] = new Valores[0];
-	
 	private Veiculo v;
 	private LocalDateTime entrada;
 	private LocalDateTime saida;

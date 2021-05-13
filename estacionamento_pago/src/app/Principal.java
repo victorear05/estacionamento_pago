@@ -3,14 +3,16 @@ package app;
 import cadastros.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.swing.JOptionPane;
 
 public class Principal {
-	
-	static Mensalista cadM[] = new Mensalista[0];
-	static Veiculo cadV[] = new Veiculo[0];
-	static Acessos aces[] = new Acessos[0];
+
+	static List<Mensalista> cadM = new LinkedList<Mensalista>();
+	static List<Veiculo> cadV = new LinkedList<Veiculo>();
+	static List<Acessos> aces = new LinkedList<Acessos>();
 	
 	public static void main(String[] args) {
 		menu();
@@ -90,7 +92,7 @@ public class Principal {
 									int opc = 0;
 									String strOpc= JOptionPane.showInputDialog("Digite a opção desejada:"
 																			 + "1 - Para pesquisar veículo já cadastrado"
-																			 + "2 - Para cadastrar .novo veículo");
+																			 + "2 - Para cadastrar novo veículo");
 									opc = Integer.parseInt(strOpc);
 									if(opc == 1) {
 										v = pesquisarVMensalista(M);
@@ -150,13 +152,7 @@ public class Principal {
 		String NPlaca = JOptionPane.showInputDialog("Número da Placa:\n");
 		
 		Veiculo v = new Veiculo(Marca, Modelo, NPlaca, mensalista);
-		Veiculo tempV[] = new Veiculo[cadV.length + 1];	
-		for(int i = 0; i < cadV.length;i++) {
-			tempV[i] = cadV[i];
-		}
-		tempV[tempV.length - 1] = v;
-		cadV = tempV;
-		
+		cadV.add(v);
 		//Registrando Acesso: 
 		novoAcesso(v);
 		return v;
@@ -171,31 +167,25 @@ public class Principal {
 		String CNH = JOptionPane.showInputDialog("CNH:\n");
 		
 		Mensalista M = new Mensalista(nome, endereco, celular, telefone, CNH);
-		Mensalista tempM[] = new Mensalista[cadM.length + 1];	
-		for(int i = 0; i < cadM.length;i++) {
-			tempM[i] = cadM[i];
-		}
-		tempM[tempM.length -1] = M;
-		cadM = tempM;
+		cadM.add(M);
 		
 		cadastrarVeiculoM(M);
 	}
 	
 	public static Veiculo pesquisarVeiculo(String placa) {
-		Veiculo v = null;
-		for(int i = 0; i < cadV.length; i++)
-			if((cadV[i].getPlaca()).equals(placa))
-				v = cadV[i];
-		return v;	
+		for(Veiculo v : cadV) {
+			if(placa.equalsIgnoreCase(v.getPlaca())) 
+				return v;
+		}
+		return null;	
 	}
 	
 	public static Mensalista pesquisarMensalista(String CNH) {
-		Mensalista M = null;
-		for(int i = 0; i < cadM.length; i++) {
-			if(CNH.equals(cadM[i].getCNH())) 
-				M = cadM[i];
+		for(Mensalista M : cadM) {
+			if(CNH.equalsIgnoreCase(M.getCNH())) 
+				return M;
 		}
-		return M;	
+		return null;	
 	}
 
 	public static void novoAcesso(Veiculo v) {
@@ -209,49 +199,33 @@ public class Principal {
 		LocalDateTime saida = LocalDateTime.parse(strSaida, formato);
 		
 		Acessos A = new Acessos(v, entrada, saida);		//Tranformar String em LocalDateTime
-		Acessos tempA[] = new Acessos[aces.length + 1];	
-		for(int i = 0; i < aces.length;i++) {
-			tempA[i] = aces[i];
-		}
-		tempA[tempA.length -1] = A;
-		aces = tempA;
+		aces.add(A);
 	}
 	
 	public static Veiculo pesquisarVMensalista(Mensalista M) {
+		List<Veiculo> VM = M.getCadVM();
+		String placa = JOptionPane.showInputDialog("Digite a placa do carro o qual deseja registrar o acesso: ");
+		for(Veiculo v : VM) {
+			if(placa.equalsIgnoreCase(v.getPlaca()));
+				return v;
+		}
 		
-		Veiculo VM[] = M.getCadVM();
-		Veiculo v = null;
-		if(VM.length > 0) {
-			int opV;
-			String Veic = "";
-			for(int i = 0; i < VM.length; i++)
-				Veic += "Veículo " + i + ":\n"  
-					 + "\tMarca: " + VM[i].getMarca() + "\n"
-					 + "\tModelo: " + VM[i].getModelo()+ "\n"
-					 + "\tPlaca: " + VM[i].getPlaca();
-				String strOpV = JOptionPane.showInputDialog(Veic,"Para qual carro deseja registrar o acesso?");
-				opV = Integer.parseInt(strOpV);
-				if(opV >= VM.length)
-					JOptionPane.showMessageDialog(null, "Veiculo Inválido!");
-				else
-					v = VM[opV];
-			}
-			else
-				JOptionPane.showMessageDialog(null, "Usuário não possui veículos cadastrados");
-		return v;
+		return null;
 	}
 	
 	public static void imprimeAcessos() {
-		if(aces.length != 0) {
+		if(aces != null) {
+			int i = 1;
 			String Acess = "";
-			for(int i = 0;i < aces.length;i++) {
-				Acess += "Acesso " + (i + 1)  + ":\n"
-					   + aces[i].getV().getMarca() + "\n" 
-					   + aces[i].getV().getModelo() + "\n" 
-					   + aces[i].getV().getPlaca() + "\n"
-					   + aces[i].getEntrada() + "\n"
-					   + aces[i].getSaida() + "\n"
-					   + "R$ " + aces[i].getPreco() + "\n";
+			for(Acessos a : aces) {
+				Acess += "Acesso " + i + ":\n"
+					   + a.getV().getMarca() + "\n" 
+					   + a.getV().getModelo() + "\n" 
+					   + a.getV().getPlaca() + "\n"
+					   + a.getEntrada() + "\n"
+					   + a.getSaida() + "\n"
+					   + "R$ " + a.getPreco() + "\n";
+				i++;
 			}
 		JOptionPane.showMessageDialog(null, Acess);
 		}
@@ -259,3 +233,25 @@ public class Principal {
 			JOptionPane.showMessageDialog(null,"Sem acessos!");
 	}
 }
+/*
+Mensalista tempM[] = new Mensalista[cadM.length + 1];	
+for(int i = 0; i < cadM.length;i++) {
+	tempM[i] = cadM[i];
+}
+tempM[tempM.length -1] = M;
+cadM = tempM;
+
+Veiculo tempV[] = new Veiculo[cadV.length + 1];	
+for(int i = 0; i < cadV.length;i++) {
+	tempV[i] = cadV[i];
+}
+tempV[tempV.length - 1] = v;
+cadV = tempV;
+
+Acessos tempA[] = new Acessos[aces.length + 1];	
+		for(int i = 0; i < aces.length;i++) {
+			tempA[i] = aces[i];
+		}
+		tempA[tempA.length -1] = A;
+		aces = tempA;
+*/
