@@ -223,12 +223,13 @@ public class Principal {
 		Veiculo v = null;
 		if(VM.length > 0) {
 			int opV;
+			String Veic = "";
 			for(int i = 0; i < VM.length; i++)
-				JOptionPane.showMessageDialog(null,"Veículo " + i + ": \n"  
-												  +	"Marca: " + VM[i].getMarca() + "\n"
-												  + "Modelo: " + VM[i].getModelo()+ "\n"
-												  + "Placa: " + VM[i].getPlaca());
-				String strOpV = JOptionPane.showInputDialog("Para qual carro deseja registrar o acesso?");
+				Veic += "Veículo " + i + ":\n"  
+					 + "\tMarca: " + VM[i].getMarca() + "\n"
+					 + "\tModelo: " + VM[i].getModelo()+ "\n"
+					 + "\tPlaca: " + VM[i].getPlaca();
+				String strOpV = JOptionPane.showInputDialog(Veic,"Para qual carro deseja registrar o acesso?");
 				opV = Integer.parseInt(strOpV);
 				if(opV >= VM.length)
 					JOptionPane.showMessageDialog(null, "Veiculo Inválido!");
@@ -241,14 +242,18 @@ public class Principal {
 	}
 	
 	public static void imprimeAcessos() {
-		if(aces.length != 0)
+		if(aces.length != 0) {
+			String Acess = "";
 			for(int i = 0;i < aces.length;i++) {
-				JOptionPane.showMessageDialog(null, aces[i].getV().getMarca() + "\n" 
-												  + aces[i].getV().getModelo() + "\n" 
-												  + aces[i].getV().getPlaca() + "\n"
-												  + aces[i].getEntrada() + "\n"
-												  + aces[i].getSaida() + "\n"
-												  + aces[i].getPreco());
+				Acess += "Acesso " + (i + 1)  + ":\n"
+					   + aces[i].getV().getMarca() + "\n" 
+					   + aces[i].getV().getModelo() + "\n" 
+					   + aces[i].getV().getPlaca() + "\n"
+					   + aces[i].getEntrada() + "\n"
+					   + aces[i].getSaida() + "\n"
+					   + "R$ " + aces[i].getPreco() + "\n";
+			}
+		JOptionPane.showMessageDialog(null, Acess);
 		}
 		else
 			JOptionPane.showMessageDialog(null,"Sem acessos!");
