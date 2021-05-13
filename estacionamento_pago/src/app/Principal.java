@@ -91,8 +91,8 @@ public class Principal {
 								if(M != null) {
 									int opc = 0;
 									String strOpc= JOptionPane.showInputDialog("Digite a opção desejada:"
-																			 + "1 - Para pesquisar veículo já cadastrado"
-																			 + "2 - Para cadastrar novo veículo");
+											+ "1 - Para pesquisar veículo já cadastrado"
+											+ "2 - Para cadastrar novo veículo");
 									opc = Integer.parseInt(strOpc);
 									if(opc == 1) {
 										v = pesquisarVMensalista(M);
