@@ -1,5 +1,6 @@
 package app;
 
+import Exception.*;
 import cadastros.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -179,20 +180,41 @@ public class Principal {
 		return v;
 	}
 	
-	public static void cadastrarMensalista() {
+	public static void cadastrarMensalista(){
+		String nome;
+		String endereco;
+		String celular;
+		String telefone;
+		String CNH;
 		
-		String nome = JOptionPane.showInputDialog("Nome:\n");
-		String endereco = JOptionPane.showInputDialog("Endereco:\n");
-		String celular = JOptionPane.showInputDialog("Celular:\n");
-		String telefone = JOptionPane.showInputDialog("Telefone:\nCaso não queira cadastrar um telefone, digite apenas 0\n");
-		if(telefone.equals("0"))
-			telefone = "";
-		String CNH = JOptionPane.showInputDialog("CNH:\n");
+		try {
+			nome = JOptionPane.showInputDialog("Nome:\n");
+			endereco = JOptionPane.showInputDialog("Endereco:\n");
+			celular = JOptionPane.showInputDialog("Celular:\n");
+			telefone = JOptionPane.showInputDialog("Telefone:\nCaso não queira cadastrar um telefone, digite apenas 0\n");
+			if(telefone.equals("0"))
+				telefone = "";
+			CNH = JOptionPane.showInputDialog("CNH:\n");
+
+		
+		if(nome == "")
+			throw new DadosPessoaisIncompletosException("Campo nome vazio");		
+		if(endereco == "")
+			throw new DadosPessoaisIncompletosException("Campo endereço vazio");		
+		if(celular == "")
+			throw new DadosPessoaisIncompletosException("Campo celular vazio");			
+		if(CNH == "")
+			throw new DadosPessoaisIncompletosException("Campo CNH vazio");
+		}catch (DadosPessoaisIncompletosException e){
+			JOptionPane.showMessageDialog(null, "Informar todos os campos!" + e.getMessage());
+		}
 		
 		Mensalista M = new Mensalista(nome, endereco, celular, telefone, CNH);
 		cadM.add(M);
+		
 		JOptionPane.showMessageDialog(null, "Usuário Cadastrado, cadastre agora o veículo de acesso!\n");
 		cadastrarVeiculoM(M);
+		
 	}
 	
 	public static Veiculo pesquisarVeiculo(String placa) {
