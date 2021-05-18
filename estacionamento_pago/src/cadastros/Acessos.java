@@ -1,9 +1,7 @@
 package cadastros;
 
-import java.time.Duration; 
+import java.time.Duration;  
 import java.time.LocalDateTime;
-
-import javax.swing.JOptionPane;
 
 import valores.*;
 
@@ -34,7 +32,7 @@ public class Acessos {
 		Valores preco = null;
 		
 		if(v.getMensalista() == null) {
-			if (DiaE != DiaS) {
+			if (DiaE != DiaS) {	
 				preco = new FPernoite(duracao_m);
 			}else if (duracao_m < 15) {
 				preco = new FMinuto(duracao_m);
@@ -43,7 +41,6 @@ public class Acessos {
 			}else if(duracao_h < 9) {
 				preco = new FHora(duracao_m);
 			}else if(duracao_h >= 9) {
-				JOptionPane.showMessageDialog(null, duracao_m);
 				preco = new FDiaria(duracao_m);
 			}
 		}

@@ -2,6 +2,8 @@ package valores;
 
 public class FPernoite extends Valores{
 	
+	int dias;
+	
 	public FPernoite(long tempoMin) {
 		super(tempoMin);
 	}
