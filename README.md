@@ -14,9 +14,7 @@ Levi Queiroz - 170108341
 Branch: 1ª Entrega  
 [Diagrama de Classes em UML](https://drive.google.com/file/d/1tojmaQLHBeqHPTwzbn8UvEA_vBSlfJyB/view?usp=sharing)  
   
-## 2ª Entrega:  
-  
-  
-## 3ª Entrega:  
-  
+## 2ª e 3ª Entregas:  
+Branch: main  
+[Diagrama de Classes em UML - Versão final](https://app.diagrams.net/#G1klPhdSoKdMvJw5OyiIiUt6zE0cZSjl84)  
   
