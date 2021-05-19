@@ -182,7 +182,8 @@ public class Principal {
 					throw new DadosVeiculosIncompletosException("Campo Marca Incompleto!");
 				repeat = false;
 			}catch(DadosVeiculosIncompletosException e) {
-				JOptionPane.showMessageDialog(null, e.getMessage());
+				String msg = "DadosVeiculosIncompletosException\n" + e.getMessage();
+				JOptionPane.showMessageDialog(null, msg);
 				repeat = true;
 			}
 		}
@@ -195,7 +196,8 @@ public class Principal {
 					throw new DadosVeiculosIncompletosException("Campo Modelo Incompleto!");
 				repeat = false;
 			}catch(DadosVeiculosIncompletosException e) {
-				JOptionPane.showMessageDialog(null, e.getMessage());
+				String msg = "DadosVeiculosIncompletosException\n" + e.getMessage();
+				JOptionPane.showMessageDialog(null, msg);
 				repeat = true;
 			}
 		}
@@ -208,7 +210,8 @@ public class Principal {
 					throw new DadosVeiculosIncompletosException("Campo Placa Incompleto!");
 				repeat = false;
 			}catch(DadosVeiculosIncompletosException e) {
-				JOptionPane.showMessageDialog(null, e.getMessage());
+				String msg = "DadosVeiculosIncompletosException\n" + e.getMessage();
+				JOptionPane.showMessageDialog(null, msg);
 				repeat = true;
 			}
 		}
@@ -236,7 +239,8 @@ public class Principal {
 					throw new DadosPessoaisIncompletosException("Campo nome vazio!");
 				repeat = false;
 			}catch(DadosPessoaisIncompletosException e) {
-				JOptionPane.showMessageDialog(null, e.getMessage());
+				String msg = "DadosPessoaisIncompletosException\n" + e.getMessage();
+				JOptionPane.showMessageDialog(null, msg);
 				repeat = true;
 			}
 		}
@@ -250,7 +254,8 @@ public class Principal {
 				}
 				repeat = false;
 			}catch(DadosPessoaisIncompletosException e) {
-				JOptionPane.showMessageDialog(null, e.getMessage());
+				String msg = "DadosPessoaisIncompletosException\n" + e.getMessage();
+				JOptionPane.showMessageDialog(null, msg);
 				repeat = true;
 			}
 		}
@@ -264,7 +269,8 @@ public class Principal {
 				}
 				repeat = false;
 			}catch(DadosPessoaisIncompletosException e) {
-				JOptionPane.showMessageDialog(null, e.getMessage());
+				String msg = "DadosPessoaisIncompletosException\n" + e.getMessage();
+				JOptionPane.showMessageDialog(null, msg);
 				repeat = true;
 			}
 		}
@@ -278,7 +284,8 @@ public class Principal {
 				}
 				repeat = false;
 			}catch(DadosPessoaisIncompletosException e) {
-				JOptionPane.showMessageDialog(null, e.getMessage());
+				String msg = "DadosPessoaisIncompletosException\n" + e.getMessage();
+				JOptionPane.showMessageDialog(null, msg);
 				repeat = true;
 			}
 		}
@@ -330,10 +337,12 @@ public class Principal {
 							throw new EstacionamentoFechadoException("Horário de entrada inválido, estacionamento fechado!");
 						repeat = false;
 					}catch(DadosAcessoIncompletosException e) {
-						JOptionPane.showMessageDialog(null, e.getMessage());
+						String msg = "DadosAcessoIncompletosException\n" + e.getMessage();
+						JOptionPane.showMessageDialog(null, msg);
 						repeat = true;
 					}catch(EstacionamentoFechadoException e) {
-						JOptionPane.showMessageDialog(null, e.getMessage());
+						String msg = "EstacionamentoFechadoException\n" + e.getMessage();
+						JOptionPane.showMessageDialog(null, msg);
 						repeat = true;
 					}
 				}
@@ -350,10 +359,12 @@ public class Principal {
 							throw new EstacionamentoFechadoException("Horário de saída inválido, estacionamento fechado!");
 						repeat = false;
 					}catch(DadosAcessoIncompletosException e ) {
-						JOptionPane.showMessageDialog(null, e.getMessage());
+						String msg = "DadosAcessoIncompletosException\n" + e.getMessage();
+						JOptionPane.showMessageDialog(null, msg);
 						repeat = true;
 					}catch(EstacionamentoFechadoException e) {
-						JOptionPane.showMessageDialog(null, e.getMessage());
+						String msg = "EstacionamentoFechadoException\n" + e.getMessage();
+						JOptionPane.showMessageDialog(null, msg);
 						repeat = true;
 					}
 				}
@@ -362,7 +373,8 @@ public class Principal {
 					throw new PeriodoInvalidoException("Período igual ou inferior a zero, digite uma entrada e uma saída válidas!");
 				repeat1 = false;
 			}catch(PeriodoInvalidoException e) {
-				JOptionPane.showMessageDialog(null, e.getMessage());
+				String msg = "PeriodoInválidoException\n" + e.getMessage();
+				JOptionPane.showMessageDialog(null, msg);
 				repeat1 = true;
 			}
 		}
