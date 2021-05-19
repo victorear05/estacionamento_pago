@@ -381,25 +381,25 @@ public class Principal {
 	}
 	
 	public static void imprimeAcessos() {
-			int i = 1;
-			String Acess = "";
-			for(Acessos a : aces) {
-				Acess += "Acesso " + i + ":\n";
-				if(a.getV().getMensalista() != null) {
-					Acess += "Mensalista \nNome: " + a.getV().getMensalista().getNome() + '\n'
-						   + "CNH: " + a.getV().getMensalista().getCNH() + '\n';
-				}
-				else
-					Acess += "Entrada Simples\n";
-					
-				Acess += "Marca: " + a.getV().getMarca() + '\n' 
-					   + "Modelo: " + a.getV().getModelo() + '\n' 
-					   + "Placa: " + a.getV().getPlaca() + '\n'
-					   + "Entrada: " + a.getEntrada() + '\n'
-					   + "Saída: " + a.getSaida() + '\n'
-					   + "Preço: " + "R$" + a.getPreco() + "\n\n";
-				i++;
+		int i = 1;
+		String Acess = "";
+		for(Acessos a : aces) {
+			Acess += "Acesso " + i + ":\n";
+			if(a.getV().getMensalista() != null) {
+				Acess += "Mensalista \nNome: " + a.getV().getMensalista().getNome() + '\n'
+					   + "CNH: " + a.getV().getMensalista().getCNH() + '\n';
 			}
+			else
+				Acess += "Entrada Simples\n";
+				
+			Acess += "Marca: " + a.getV().getMarca() + '\n' 
+				   + "Modelo: " + a.getV().getModelo() + '\n' 
+				   + "Placa: " + a.getV().getPlaca() + '\n'
+				   + "Entrada: " + a.getEntrada() + '\n'
+				   + "Saída: " + a.getSaida() + '\n'
+				   + "Preço: " + "R$" + a.getPreco() + "\n\n";
+			i++;
+		}
 	if(Acess.equals(""))
 		JOptionPane.showMessageDialog(null, "Sem registros!");
 	else
