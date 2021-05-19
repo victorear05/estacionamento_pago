@@ -2,10 +2,7 @@ package app;
 
 import exceptions.*;
 import cadastros.*;
-
-import java.time.Duration;
 import java.time.LocalDateTime;
-import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
 import java.util.List;
@@ -26,11 +23,11 @@ public class Principal {
 		
 		int opcao = 0;
 		
-		String menu = "Digite a op√ß√£o desejada:\n"
+		String menu = "Digite a opÁ„o desejada:\n"
 				+ "1 - Nova entrada simples\n" 		
 				+ "2 - Entrada de mensalista\n"		
 				+ "3 - Listar todos os Acessos\n"
-				+ "4 - Listar todos os ve√≠culos cadastrados\n"
+				+ "4 - Listar todos os veÌculo cadastrados\n"
 				+ "5 - Listar todos os mensalistas cadastrados\n"
 				+ "6 - Exibir faturamento total\n"
 				+ "0 - Encerrar programa\n";
@@ -43,21 +40,21 @@ public class Principal {
 				case 1: {
 					int op = 0;
 					do {
-						String Menu = "Digite a op√ß√£o desejada:\n" 
-								+ "1 - Para ve√≠culo j√° cadastrado\n"
-								+ "2 - Para cadastrar um novo ve√≠culo\n"
+						String Menu = "Digite a opÁ„o desejada:\n" 
+								+ "1 - Para veÌculos j· cadastrado\n"
+								+ "2 - Para cadastrar um novo veÌculo\n"
 								+ "0 - Para voltar ao Menu Principal\n";		
 						String strOp = JOptionPane.showInputDialog(Menu);				
 						op = Integer.parseInt(strOp);
 						switch (op){
 							case 1: {
 								String placa;
-								placa = JOptionPane.showInputDialog("Digite a placa do ve√≠culo para busca");
+								placa = JOptionPane.showInputDialog("Digite a placa do veÌculo para busca");
 								Veiculo v = pesquisarVeiculo(placa);
 								if (v != null)
 									novoAcesso(v);
 								else
-									JOptionPane.showMessageDialog(null, "Ve√≠culo n√£o encontrado!");
+									JOptionPane.showMessageDialog(null, "VeÌculo n„o encontrado!");
 								op = 0;
 								break;
 							}
@@ -73,7 +70,7 @@ public class Principal {
 							}
 							
 							default: {
-								JOptionPane.showMessageDialog(null, "Op√ß√£o inv√°lida, por favor selecione uma op√ß√£o v√°lida!\n");
+								JOptionPane.showMessageDialog(null, "OpÁ„o inv·lida, por favor selecione uma opÁ„o v·lida!\n");
 								break;				
 							}
 						}
@@ -84,9 +81,9 @@ public class Principal {
 				case 2: {
 					int op = 0;
 					do {
-						String Menu = "Digite a op√ß√£o desejada:\n"
-								+ "1 - Para usu√°rio j√° cadastrado\n"
-								+ "2 - Para cadastrar um novo usu√°rio\n"
+						String Menu = "Digite a opÁ„o desejada:\n"
+								+ "1 - Para usu·rio j· cadastrado\n"
+								+ "2 - Para cadastrar um novo usu·rio\n"
 								+ "0 - Para voltar ao Menu Principal\n";
 						String strOp = JOptionPane.showInputDialog(Menu);
 						op = Integer.parseInt(strOp);
@@ -97,16 +94,16 @@ public class Principal {
 								Mensalista M = pesquisarMensalista(CNH);
 								if(M != null) {
 									int opc = 0;
-									String strOpc= JOptionPane.showInputDialog("Digite a op√ß√£o desejada: \n"
-											+ "1 - Para pesquisar ve√≠culo j√° cadastrado\n"
-											+ "2 - Para cadastrar novo ve√≠culo\n");
+									String strOpc= JOptionPane.showInputDialog("Digite a opÁ„o desejada: \n"
+											+ "1 - Para pesquisar veÌculo j· cadastrado\n"
+											+ "2 - Para cadastrar novo veÌculo\n");
 									opc = Integer.parseInt(strOpc);
 									if(opc == 1) {
 										v = pesquisarVMensalista(M);
 										if(v != null)
 											novoAcesso(v);	
 										else
-											JOptionPane.showMessageDialog(null, "Ve√≠culo n√£o encontrada!\n");
+											JOptionPane.showMessageDialog(null, "VeÌculo n„o encontrado!\n");
 									}
 									if(opc == 2)
 										v = cadastrarVeiculoM(M);
@@ -114,7 +111,7 @@ public class Principal {
 									op = 0;
 								}
 								else
-									JOptionPane.showMessageDialog(null, "Usu√°rio n√£o encontrado!");	
+									JOptionPane.showMessageDialog(null, "Usu·rio n„o encontrado!");	
 								break;	
 							}
 	
@@ -129,7 +126,7 @@ public class Principal {
 							}
 							
 							default: {
-								JOptionPane.showMessageDialog(null, "Op√ß√£o inv√°lida, por favor selecione uma op√ß√£oo v√°lida!\n");
+								JOptionPane.showMessageDialog(null, "OpÁ„o inv·lida, por favor selecione uma opÁ„o v·lida!\n");
 								break;				
 							}
 						}	
@@ -162,7 +159,7 @@ public class Principal {
 				}
 				
 				default: {
-					JOptionPane.showMessageDialog(null, "Op√ß√£o inv√°lida, por favor selecione uma op√ß√£o v√°lida!");
+					JOptionPane.showMessageDialog(null, "OpÁ„o inv·lida, por favor selecione uma opÁ„o v·lida");
 					break;
 				}
 			}
@@ -261,9 +258,9 @@ public class Principal {
 		repeat = true;
 		while(repeat == true) {
 			try {
-				endereco = JOptionPane.showInputDialog("Endereco:\n");
+				endereco = JOptionPane.showInputDialog("EndereÁo:\n");
 				if (endereco.equals("")) {
-					throw new DadosPessoaisIncompletosException("Campo endereco vazio!");
+					throw new DadosPessoaisIncompletosException("Campo endereÁo vazio!");
 				}
 				repeat = false;
 			}catch(DadosPessoaisIncompletosException e) {
@@ -286,11 +283,11 @@ public class Principal {
 			}
 		}
 		
-		telefone = JOptionPane.showInputDialog("Telefone (opcional):\nCaso n√o queira cadastrar um telefone, deixe em branco\n");			
+		telefone = JOptionPane.showInputDialog("Telefone (opcional):\nCaso n„o queira cadastrar um telefone, deixe em branco\n");			
 		
 		Mensalista M = new Mensalista(nome, endereco, celular, telefone, CNH);
 		cadM.add(M);
-		JOptionPane.showMessageDialog(null, "Usu√°rio Cadastrado, cadastre agora o ve√≠culo de acesso!\n");
+		JOptionPane.showMessageDialog(null, "Usu·rio Cadastrado, cadastre agora o veÌculo de acesso!\n");
 		cadastrarVeiculoM(M);
 	}
 
@@ -324,7 +321,7 @@ public class Principal {
 				repeat = true;
 				while(repeat == true) {
 					try {
-						strEntrada = JOptionPane.showInputDialog("Digite a data e hora de entrada do ve√≠culo como no exemplo:\n" + "DD/MM/AAAA HH:MM");
+						strEntrada = JOptionPane.showInputDialog("Digite a data e hora de entrada do veÌculo, como no exemplo:\n" + "DD/MM/AAAA HH:MM");
 						if(strEntrada.equals(""))
 							throw new DadosAcessoIncompletosException("Campo entrada vazio!");
 						entrada = LocalDateTime.parse(strEntrada, formato);
@@ -343,7 +340,7 @@ public class Principal {
 				repeat = true;
 				while(repeat == true) {
 					try {
-						strSaida = JOptionPane.showInputDialog("Digite a data e hora de sa√≠da do ve√≠culo como no exemplo:\n" + "DD/MM/AAAA HH:MM");
+						strSaida = JOptionPane.showInputDialog("Digite a data e hora de saÌda do veÌculo como no exemplo:\n" + "DD/MM/AAAA HH:MM");
 						if(strSaida.equals(""))
 							throw new DadosAcessoIncompletosException("Campo saÌda vazio!");
 						saida = LocalDateTime.parse(strSaida, formato);
@@ -393,7 +390,7 @@ public class Principal {
 						   + "CNH: " + a.getV().getMensalista().getCNH() + '\n';
 				}
 				else
-					Acess += "Entrada Simples \n";
+					Acess += "Entrada Simples\n";
 					
 				Acess += "Marca: " + a.getV().getMarca() + '\n' 
 					   + "Modelo: " + a.getV().getModelo() + '\n' 
@@ -424,7 +421,7 @@ public class Principal {
 			i++;
 		}
 		if(Veic.equals(""))
-			JOptionPane.showMessageDialog(null, "Sem registros de Ve√≠culo!");
+			JOptionPane.showMessageDialog(null, "Sem registros de veÌculos!");
 		else
 			JOptionPane.showMessageDialog(null, Veic);
 	}
@@ -436,7 +433,7 @@ public class Principal {
 			Mens += "Mensalista " + i + ":\n"
 				  +	"Nome: " + M.getNome() + '\n' 
 			      + "CNH: " + M.getCNH() + '\n' 
-			      + "Endere√ßo: " + M.getEndereco() + '\n'
+			      + "EndereÁo: " + M.getEndereco() + '\n'
 			      + "Celular: " + M.getCelular() + '\n'
 			      + "Telefone: " + M.getTelefone() + "\n\n";
 			i++;
@@ -463,12 +460,3 @@ public class Principal {
 	}
 
 }
-
-
-/*			if(endereco == "")
-throw new DadosPessoaisIncompletosException("Campo endere√ßo vazio");		
-if(celular == "")
-throw new DadosPessoaisIncompletosException("Campo celular vazio");			
-if(CNH == "")
-throw new DadosPessoaisIncompletosException("Campo CNH vazio");
-*/	
