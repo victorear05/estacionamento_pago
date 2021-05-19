@@ -321,7 +321,8 @@ public class Principal {
 				repeat = true;
 				while(repeat == true) {
 					try {
-						strEntrada = JOptionPane.showInputDialog("Digite a data e hora de entrada do veículo, como no exemplo:\n" + "DD/MM/AAAA HH:MM");
+						strEntrada = JOptionPane.showInputDialog("Digite a data e hora de entrada do veículo, como no exemplo:\n" + 
+																 "DD/MM/AAAA HH:MM");
 						if(strEntrada.equals(""))
 							throw new DadosAcessoIncompletosException("Campo entrada vazio!");
 						entrada = LocalDateTime.parse(strEntrada, formato);
@@ -340,7 +341,8 @@ public class Principal {
 				repeat = true;
 				while(repeat == true) {
 					try {
-						strSaida = JOptionPane.showInputDialog("Digite a data e hora de saída do veículo como no exemplo:\n" + "DD/MM/AAAA HH:MM");
+						strSaida = JOptionPane.showInputDialog("Digite a data e hora de saída do veículo como no exemplo:\n" + 
+															   "DD/MM/AAAA HH:MM");
 						if(strSaida.equals(""))
 							throw new DadosAcessoIncompletosException("Campo saída vazio!");
 						saida = LocalDateTime.parse(strSaida, formato);
