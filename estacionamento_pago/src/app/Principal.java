@@ -1,8 +1,11 @@
 package app;
 
-import Exception.*;
+import exceptions.*;
 import cadastros.*;
+
+import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
 import java.util.List;
@@ -168,14 +171,53 @@ public class Principal {
 	}
 	
 	public static Veiculo cadastrarVeiculoM(Mensalista mensalista) {
-		//Registrando Veï¿½culo:			
-		String Marca = JOptionPane.showInputDialog("Marca:\n");
-		String Modelo = JOptionPane.showInputDialog("Modelo:\n");
-		String NPlaca = JOptionPane.showInputDialog("NÃºmero da Placa:\n");
+					
+		String Marca = "";
+		String Modelo = "";
+		String NPlaca = "";
+		boolean repeat;
+		
+		repeat = true;
+		while(repeat == true) {
+			try {
+				Marca = JOptionPane.showInputDialog("Marca:\n");
+				if(Marca.equals(""))
+					throw new DadosVeiculosIncompletosException("Campo Marca Incompleto!");
+				repeat = false;
+			}catch(DadosVeiculosIncompletosException e) {
+				JOptionPane.showMessageDialog(null, e.getMessage());
+				repeat = true;
+			}
+		}
+		
+		repeat = true;
+		while(repeat == true) {
+			try {
+				Modelo = JOptionPane.showInputDialog("Modelo:\n");
+				if(Modelo.equals(""))
+					throw new DadosVeiculosIncompletosException("Campo Modelo Incompleto!");
+				repeat = false;
+			}catch(DadosVeiculosIncompletosException e) {
+				JOptionPane.showMessageDialog(null, e.getMessage());
+				repeat = true;
+			}
+		}
+		
+		repeat = true;
+		while(repeat == true) {
+			try {
+				NPlaca = JOptionPane.showInputDialog("Placa:\n");
+				if(NPlaca.equals(""))
+					throw new DadosVeiculosIncompletosException("Campo Placa Incompleto!");
+				repeat = false;
+			}catch(DadosVeiculosIncompletosException e) {
+				JOptionPane.showMessageDialog(null, e.getMessage());
+				repeat = true;
+			}
+		}
 		
 		Veiculo v = new Veiculo(Marca, Modelo, NPlaca, mensalista);
 		cadV.add(v);
-		//Registrando Acesso: 
 		novoAcesso(v);
 		return v;
 	}
@@ -270,15 +312,63 @@ public class Principal {
 
 	public static void novoAcesso(Veiculo v) {
 		
-		String strEntrada = JOptionPane.showInputDialog("Digite a data e hora de entrada do veÃ­culo como no exemplo:\n" + "DD/MM/AAAA HH:MM");
-		String strSaida = JOptionPane.showInputDialog("Digite a data e hora de saÃ­da do veÃ­culo como no exemplo:\n" + "DD/MM/AAAA HH:MM");
-		
+		String strEntrada = "";
+		String strSaida = "";
+		LocalDateTime entrada = null;
+		LocalDateTime saida = null;
 		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+		boolean repeat, repeat1 = true;
 		
-		LocalDateTime entrada = LocalDateTime.parse(strEntrada, formato);
-		LocalDateTime saida = LocalDateTime.parse(strSaida, formato);
+		while(repeat1 == true) {
+			try {
+				repeat = true;
+				while(repeat == true) {
+					try {
+						strEntrada = JOptionPane.showInputDialog("Digite a data e hora de entrada do veÃ­culo como no exemplo:\n" + "DD/MM/AAAA HH:MM");
+						if(strEntrada.equals(""))
+							throw new DadosAcessoIncompletosException("Campo entrada vazio!");
+						entrada = LocalDateTime.parse(strEntrada, formato);
+						if(entrada.getHour() >= 20 || entrada.getHour() < 6)
+							throw new EstacionamentoFechadoException("Horário de entrada inválido, estacionamento fechado!");
+						repeat = false;
+					}catch(DadosAcessoIncompletosException e) {
+						JOptionPane.showMessageDialog(null, e.getMessage());
+						repeat = true;
+					}catch(EstacionamentoFechadoException e) {
+						JOptionPane.showMessageDialog(null, e.getMessage());
+						repeat = true;
+					}
+				}
+				
+				repeat = true;
+				while(repeat == true) {
+					try {
+						strSaida = JOptionPane.showInputDialog("Digite a data e hora de saÃ­da do veÃ­culo como no exemplo:\n" + "DD/MM/AAAA HH:MM");
+						if(strSaida.equals(""))
+							throw new DadosAcessoIncompletosException("Campo saída vazio!");
+						saida = LocalDateTime.parse(strSaida, formato);
+						if(saida.getHour() >= 20 || saida.getHour() < 6)
+							throw new EstacionamentoFechadoException("Horário de saída inválido, estacionamento fechado!");
+						repeat = false;
+					}catch(DadosAcessoIncompletosException e ) {
+						JOptionPane.showMessageDialog(null, e.getMessage());
+						repeat = true;
+					}catch(EstacionamentoFechadoException e) {
+						JOptionPane.showMessageDialog(null, e.getMessage());
+						repeat = true;
+					}
+				}
+							
+				if(saida.isBefore(entrada) == true || saida.isEqual(entrada))
+					throw new PeriodoInvalidoException("Período igual ou inferior a zero, digite uma entrada e uma saída válidas!");
+				repeat1 = false;
+			}catch(PeriodoInvalidoException e) {
+				JOptionPane.showMessageDialog(null, e.getMessage());
+				repeat1 = true;
+			}
+		}
 		
-		Acessos A = new Acessos(v, entrada, saida);		//Tranformar String em LocalDateTime
+		Acessos A = new Acessos(v, entrada, saida);
 		aces.add(A);
 	}
 	
