@@ -271,7 +271,7 @@ public class Principal {
 			      + "Modelo: " + v.getModelo() + '\n' 
 			      + "Placa: " + v.getPlaca() + '\n';
 			if(v.getMensalista() != null)
-				Veic += "Mensalista: " + v.getMensalista().getNome() + "\n\n";
+				Veic += "Mensalista:\n" + v.getMensalista().getNome() + "/" + v.getMensalista().getCNH();
 			else
 				Veic += "Mensalista: - \n\n";
 			i++;

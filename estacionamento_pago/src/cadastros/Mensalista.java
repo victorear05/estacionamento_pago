@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Mensalista {
 
-	List<Veiculo> cadVM = new LinkedList<Veiculo>();
+	private List<Veiculo> cadVM = new LinkedList<Veiculo>();
 	private String nome;
 	private String endereco;
 	private String celular;
