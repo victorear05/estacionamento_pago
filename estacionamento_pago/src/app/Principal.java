@@ -181,42 +181,77 @@ public class Principal {
 	}
 	
 	public static void cadastrarMensalista(){
-		String nome;
-		String endereco;
-		String celular;
-		String telefone;
-		String CNH;
 		
-		try {
-			nome = JOptionPane.showInputDialog("Nome:\n");
-			endereco = JOptionPane.showInputDialog("Endereco:\n");
-			celular = JOptionPane.showInputDialog("Celular:\n");
-			telefone = JOptionPane.showInputDialog("Telefone:\nCaso não queira cadastrar um telefone, digite apenas 0\n");
-			if(telefone.equals("0"))
-				telefone = "";
-			CNH = JOptionPane.showInputDialog("CNH:\n");
-
+		String nome = "";
+		String endereco = "";
+		String celular = "";
+		String telefone = "";
+		String CNH = "";
+		boolean repeat;
 		
-		if(nome == "")
-			throw new DadosPessoaisIncompletosException("Campo nome vazio");		
-		if(endereco == "")
-			throw new DadosPessoaisIncompletosException("Campo endereço vazio");		
-		if(celular == "")
-			throw new DadosPessoaisIncompletosException("Campo celular vazio");			
-		if(CNH == "")
-			throw new DadosPessoaisIncompletosException("Campo CNH vazio");
-		}catch (DadosPessoaisIncompletosException e){
-			JOptionPane.showMessageDialog(null, "Informar todos os campos!" + e.getMessage());
+		repeat = true;
+		while(repeat == true) {
+			try {
+				nome = JOptionPane.showInputDialog("Nome:\n");
+				if(nome.equals(""))
+					throw new DadosPessoaisIncompletosException("Campo nome vazio!");
+				repeat = false;
+			}catch(DadosPessoaisIncompletosException e) {
+				JOptionPane.showMessageDialog(null, e.getMessage());
+				repeat = true;
+			}
 		}
+		
+		repeat = true;
+		while(repeat == true) {
+			try {
+				CNH = JOptionPane.showInputDialog("CNH:\n");
+				if (CNH.equals("")) {
+					throw new DadosPessoaisIncompletosException("Campo CNH vazio!");
+				}
+				repeat = false;
+			}catch(DadosPessoaisIncompletosException e) {
+				JOptionPane.showMessageDialog(null, e.getMessage());
+				repeat = true;
+			}
+		}
+		
+		repeat = true;
+		while(repeat == true) {
+			try {
+				endereco = JOptionPane.showInputDialog("Endereco:\n");
+				if (endereco.equals("")) {
+					throw new DadosPessoaisIncompletosException("Campo endereco vazio!");
+				}
+				repeat = false;
+			}catch(DadosPessoaisIncompletosException e) {
+				JOptionPane.showMessageDialog(null, e.getMessage());
+				repeat = true;
+			}
+		}
+		
+		repeat = true;
+		while(repeat == true) {	
+			try {
+				celular = JOptionPane.showInputDialog("Celular:\n");
+				if (celular.equals("")) {
+					throw new DadosPessoaisIncompletosException("Campo celular vazio!");
+				}
+				repeat = false;
+			}catch(DadosPessoaisIncompletosException e) {
+				JOptionPane.showMessageDialog(null, e.getMessage());
+				repeat = true;
+			}
+		}
+		
+		telefone = JOptionPane.showInputDialog("Telefone (opcional):\nCaso n�o queira cadastrar um telefone, deixe em branco\n");			
 		
 		Mensalista M = new Mensalista(nome, endereco, celular, telefone, CNH);
 		cadM.add(M);
-		
 		JOptionPane.showMessageDialog(null, "Usuário Cadastrado, cadastre agora o veículo de acesso!\n");
 		cadastrarVeiculoM(M);
-		
 	}
-	
+
 	public static Veiculo pesquisarVeiculo(String placa) {
 		for(Veiculo v : cadV) {
 			if(placa.equalsIgnoreCase(v.getPlaca())) 
@@ -338,3 +373,12 @@ public class Principal {
 	}
 
 }
+
+
+/*			if(endereco == "")
+throw new DadosPessoaisIncompletosException("Campo endereço vazio");		
+if(celular == "")
+throw new DadosPessoaisIncompletosException("Campo celular vazio");			
+if(CNH == "")
+throw new DadosPessoaisIncompletosException("Campo CNH vazio");
+*/	
