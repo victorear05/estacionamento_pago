@@ -1,6 +1,7 @@
 package exceptions;
 
 public class DadosAcessoIncompletosException extends Exception{
+	
 	public DadosAcessoIncompletosException(){
         super();
     }
