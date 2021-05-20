@@ -30,6 +30,7 @@ public class Principal {
 				+ "5 - Listar todos os mensalistas cadastrados\n" + "6 - Exibir faturamento total\n"
 				+ "7 - Excluir cadastro de Mensalista\n" + "8 - Excluir cadastro de veículo\n"
 				+ "0 ou pressione cancelar - Encerrar programa\n";
+
 		do {
 			boolean repeat1 = true;
 			while (repeat1 == true)
