@@ -2,6 +2,8 @@ package app;
 
 import exceptions.*;
 import cadastros.*;
+
+import java.time.DateTimeException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
@@ -93,22 +95,37 @@ public class Principal {
 								String CNH = JOptionPane.showInputDialog("Digite a CNH a ser buscada:");
 								Mensalista M = pesquisarMensalista(CNH);
 								if(M != null) {
-									int opc = 0;
-									String strOpc= JOptionPane.showInputDialog("Digite a opção desejada: \n"
-											+ "1 - Para pesquisar veículo já cadastrado\n"
-											+ "2 - Para cadastrar novo veículo\n");
-									opc = Integer.parseInt(strOpc);
-									if(opc == 1) {
-										v = pesquisarVMensalista(M);
-										if(v != null)
-											novoAcesso(v);	
-										else
-											JOptionPane.showMessageDialog(null, "Veículo não encontrado!\n");
+									int opcf = 0;
+									while (opcf ==0){
+										int opc = 0;
+										String strOpc= JOptionPane.showInputDialog("Digite a opção desejada: \n"
+												+ "1 - Para pesquisar veículo já cadastrado\n"
+												+ "2 - Para cadastrar novo veículo\n"
+												+ "0 - Para voltar ao Menu Principal\n");
+										opc = Integer.parseInt(strOpc);
+										if(opc == 1) {
+											v = pesquisarVMensalista(M);
+											if(v != null)
+											{
+												novoAcesso(v);	
+											    opcf = 1;	
+											}	
+											else {
+												JOptionPane.showMessageDialog(null, "Veículo não encontrado!\n");	
+											}
+										}
+										if(opc == 2) {
+											v = cadastrarVeiculoM(M);
+										    op = 0;	
+										    opcf = 1;	
+										}
+										if(opc == 0) {
+										    op = 0;	
+											opcf = 1;
+										    break;
+										}
 									}
-									if(opc == 2)
-										v = cadastrarVeiculoM(M);
-									
-									op = 0;
+										
 								}
 								else
 									JOptionPane.showMessageDialog(null, "Usuário não encontrado!");	
@@ -177,7 +194,7 @@ public class Principal {
 		repeat = true;
 		while(repeat == true) {
 			try {
-				Marca = JOptionPane.showInputDialog("Marca:\n");
+				Marca = JOptionPane.showInputDialog("Marca do Veículo:\n");
 				if(Marca.equals(""))
 					throw new DadosVeiculosIncompletosException("Campo Marca Incompleto!");
 				repeat = false;
@@ -191,7 +208,7 @@ public class Principal {
 		repeat = true;
 		while(repeat == true) {
 			try {
-				Modelo = JOptionPane.showInputDialog("Modelo:\n");
+				Modelo = JOptionPane.showInputDialog("Modelo do Veículo:\n");
 				if(Modelo.equals(""))
 					throw new DadosVeiculosIncompletosException("Campo Modelo Incompleto!");
 				repeat = false;
@@ -205,7 +222,7 @@ public class Principal {
 		repeat = true;
 		while(repeat == true) {
 			try {
-				NPlaca = JOptionPane.showInputDialog("Placa:\n");
+				NPlaca = JOptionPane.showInputDialog("Placa do Veículo:\n");
 				if(NPlaca.equals(""))
 					throw new DadosVeiculosIncompletosException("Campo Placa Incompleto!");
 				repeat = false;
@@ -336,6 +353,10 @@ public class Principal {
 						if(entrada.getHour() >= 20 || entrada.getHour() < 6)
 							throw new EstacionamentoFechadoException("Horário de entrada inválido, estacionamento fechado!");
 						repeat = false;
+					}catch(DateTimeException e) {
+						String msg = "DateTimeException\n Data Informada Inválida!" + e.getMessage();
+						JOptionPane.showMessageDialog(null, msg);
+						repeat = true;
 					}catch(DadosAcessoIncompletosException e) {
 						String msg = "DadosAcessoIncompletosException\n" + e.getMessage();
 						JOptionPane.showMessageDialog(null, msg);
