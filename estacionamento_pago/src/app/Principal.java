@@ -16,6 +16,7 @@ public class Principal {
 	static List<Mensalista> cadM = new LinkedList<Mensalista>();
 	static List<Veiculo> cadV = new LinkedList<Veiculo>();
 	static List<Acessos> aces = new LinkedList<Acessos>();
+	private static double FaturamentoTotal = 0;
 
 	public static void main(String[] args) {
 		menu();
@@ -453,6 +454,7 @@ public class Principal {
 		cadM.add(M);
 		JOptionPane.showMessageDialog(null, "Usuário Cadastrado, cadastre agora o veículo de acesso!\n");
 		cadastrarVeiculoM(M);
+		FaturamentoTotal += 500;
 	}
 
 	public static Veiculo pesquisarVeiculo(String placa) {
@@ -564,6 +566,8 @@ public class Principal {
 		if (repeat1 == false) {
 			Acessos A = new Acessos(v, entrada, saida);
 			aces.add(A);
+			if(A.getV().getMensalista() == null)
+				FaturamentoTotal += A.getPreco(); 
 		}
 	}
 
@@ -646,18 +650,7 @@ public class Principal {
 	}
 
 	public static void imprimeFaturamento() {
-		double faturamentoS = 0;
-		double faturamentoM = 0;
-
-		for (Acessos a : aces)
-			if (a.getV().getMensalista() == null)
-				faturamentoS += a.getPreco();
-
-		faturamentoM = cadM.size() * 500;
-
-		double faturamentoT = faturamentoS + faturamentoM;
-
-		JOptionPane.showMessageDialog(null, faturamentoT);
+		JOptionPane.showMessageDialog(null, FaturamentoTotal);		
 	}
 
 	public static void excluiVeiculo(String NPlaca) {
