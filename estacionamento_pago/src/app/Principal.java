@@ -24,7 +24,7 @@ public class Principal {
 	public static void menu() {
 		
 		int opcao = 0;
-		
+
 		String menu = "Digite a opção desejada:\n"
 				+ "1 - Nova entrada simples\n" 		
 				+ "2 - Entrada de mensalista\n"		
@@ -32,7 +32,9 @@ public class Principal {
 				+ "4 - Listar todos os veículo cadastrados\n"
 				+ "5 - Listar todos os mensalistas cadastrados\n"
 				+ "6 - Exibir faturamento total\n"
-				+ "0 - Encerrar programa\n";
+				+ "7 - Excluir cadastro de Mensalista\n"
+				+ "8 - Excluir cadastro de veículo\n"
+				+ "0 ou pressione cancelar - Encerrar programa\n";
 		do {
 			boolean repeat1 = true;
 			while(repeat1 == true)
@@ -91,8 +93,10 @@ public class Principal {
 									}
 									if(cancelar == false) {
 										Veiculo v = pesquisarVeiculo(placa);
-										if (v != null)
+										if (v != null) {
 											novoAcesso(v);
+											op = 0;
+										}
 										else
 											JOptionPane.showMessageDialog(null, "Veículo não encontrado!");
 									}
@@ -235,6 +239,44 @@ public class Principal {
 						break;
 					}
 					
+					case 7: {
+						if(cadM.isEmpty())
+							JOptionPane.showMessageDialog(null, "Não há Mensalistas cadastrados!");
+						else {
+							String CNH = "";
+							boolean cancelar = false;
+							try {
+								CNH = JOptionPane.showInputDialog("Digite a CNH do usuário a ser excluído:\n");
+								if(CNH == null)
+									throw new OpcaoCancelarException();
+							}catch(OpcaoCancelarException e){
+								cancelar = true;
+							}			
+							if(cancelar == false)
+								excluiMensalista(CNH);
+						}
+						break;
+					}
+					case 8: {
+						if(cadV.isEmpty())
+							JOptionPane.showMessageDialog(null, "Não há veículos cadastrados!");
+						else {
+							String NPlaca = "";
+							boolean cancelar = false;
+							try {
+								NPlaca = JOptionPane.showInputDialog("Digite a placa do carro a ser excluído:\n");
+								if(NPlaca == null)
+									throw new OpcaoCancelarException();
+							}catch(OpcaoCancelarException e){
+								cancelar = true;
+							}
+							
+							if(cancelar == false)
+								excluiVeiculo(NPlaca);
+						}
+						break;
+					}
+					
 					case 0: {
 						break;
 					}
@@ -255,7 +297,7 @@ public class Principal {
 		String NPlaca = "";
 		boolean repeat;
 		repeat = true;
-		
+			
 			while(repeat == true) {
 				try {
 					Marca = JOptionPane.showInputDialog("Marca do Veículo:\n");
@@ -273,8 +315,6 @@ public class Principal {
 				}
 			}
 		
-		
-
 			repeat = true;
 			while(repeat == true) {
 				try {
@@ -292,15 +332,16 @@ public class Principal {
 					repeat = true;
 				}
 			}
-		
-		
-
+			
 			repeat = true;
 			while(repeat == true) {
 				try {
 					NPlaca = JOptionPane.showInputDialog("Placa do Veículo:\n");
 					if(NPlaca.equals("") || NPlaca == null)
 						throw new DadosVeiculosIncompletosException("Campo Placa Incompleto!");
+					Veiculo v = pesquisarVeiculo(NPlaca);
+					if(v != null)
+						throw new PlacaJaCadastradaException();
 					repeat = false;
 				}catch(DadosVeiculosIncompletosException e) {
 					String msg = "DadosVeiculosIncompletosException\n" + e.getMessage();
@@ -310,6 +351,9 @@ public class Principal {
 						String msg = "NullPointerException\nOpção cancelar indisponível quando se está fazendo o cadastro!";
 						JOptionPane.showMessageDialog(null, msg);
 						repeat = true;
+				}catch(PlacaJaCadastradaException e) {
+					JOptionPane.showMessageDialog(null,"PlacaJaCadastradaException\nPlaca digitada já foi cadastrada!");
+					repeat = true;
 				}
 			}
 
@@ -354,6 +398,10 @@ public class Principal {
 					throw new DadosPessoaisIncompletosException("Campo CNH vazio!");
 				}
 				repeat = false;
+				Mensalista M = pesquisarMensalista(CNH);
+				if(M != null)
+					throw new CNHJaCadastradaException();
+				repeat = false;
 			}catch(DadosPessoaisIncompletosException e) {
 				String msg = "DadosPessoaisIncompletosException\n" + e.getMessage();
 				JOptionPane.showMessageDialog(null, msg);
@@ -361,6 +409,9 @@ public class Principal {
 			}catch(NullPointerException e) {
 				String msg = "NullPointerException\nOpção cancelar indisponível quando se está fazendo o cadastro!";
 				JOptionPane.showMessageDialog(null, msg);
+				repeat = true;
+			}catch(CNHJaCadastradaException e) {
+				JOptionPane.showMessageDialog(null,"CNHJaCadastradaException\nCNH digitada já foi cadastrada!");
 				repeat = true;
 			}
 		}
@@ -453,7 +504,7 @@ public class Principal {
 						if(strEntrada.equals(""))
 							throw new DadosAcessoIncompletosException("Campo entrada vazio!");
 						entrada = LocalDateTime.parse(strEntrada, formato);
-						if(entrada.getHour() >= 20 || entrada.getHour() < 6)
+						if(entrada.getHour() > 20 || (entrada.getHour() == 20 && entrada.getMinute() > 0) || entrada.getHour() < 6)
 							throw new EstacionamentoFechadoException("Horário de entrada inválido, estacionamento fechado!");
 						repeat = false;
 					}catch(NullPointerException e) {
@@ -486,7 +537,7 @@ public class Principal {
 						if(strSaida.equals(""))
 							throw new DadosAcessoIncompletosException("Campo saída vazio!");
 						saida = LocalDateTime.parse(strSaida, formato);
-						if(saida.getHour() >= 20 || saida.getHour() < 6)
+						if(saida.getHour() > 20 || (saida.getHour() == 20 && saida.getMinute() > 0) || saida.getHour() < 6)
 							throw new EstacionamentoFechadoException("Horário de saída inválido, estacionamento fechado!");
 						repeat = false;
 					}catch(NullPointerException e) {
@@ -583,7 +634,7 @@ public class Principal {
 			      + "Modelo: " + v.getModelo() + '\n' 
 			      + "Placa: " + v.getPlaca() + '\n';
 			if(v.getMensalista() != null)
-				Veic += "Mensalista:\n" + v.getMensalista().getNome() + "/" + v.getMensalista().getCNH();
+				Veic += "Mensalista:\n" + v.getMensalista().getNome() + "/" + v.getMensalista().getCNH() + "\n";
 			else
 				Veic += "Mensalista: - \n\n";
 			i++;
@@ -626,5 +677,31 @@ public class Principal {
 		
 		JOptionPane.showMessageDialog(null, faturamentoT);
 	}
+	
+	public static void excluiVeiculo(String NPlaca) {
 
+		Veiculo v = pesquisarVeiculo(NPlaca);
+		if(v != null) {
+			JOptionPane.showMessageDialog(null, "Veículo: " + v.getMarca() + " " + v.getModelo() + "\nPlaca: " + v.getPlaca()
+					+ "\nExcluído com sucesso!");
+			cadV.remove(v);
+		}
+		else
+			JOptionPane.showMessageDialog(null,"Veículo possuidor da placa: " + NPlaca + " não foi encontrado!");
+	}
+	
+	public static void excluiMensalista(String CNH) {
+		Mensalista M = pesquisarMensalista(CNH);
+		if(M != null) {
+			for(Veiculo v : cadV)
+				if(v.getMensalista() != null)
+					if(v.getMensalista().getCNH().equals(M.getCNH()))
+						cadV.remove(v);
+			JOptionPane.showMessageDialog(null, "Usuário: " + M.getNome() + "\n" + "CNH: " + M.getCNH() + "\nExcluído com sucesso!");
+			M.getCadVM().clear();
+			cadM.remove(M);
+		}
+		else
+			JOptionPane.showMessageDialog(null,"Usuário possuidor da CNH: " + CNH + " não foi encontrado!");
+	}
 }
