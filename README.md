@@ -16,5 +16,5 @@ Branch: 1ª Entrega
   
 ## 2ª e 3ª Entregas:  
 Branch: main  
-[Diagrama de Classes em UML - Versão final](https://app.diagrams.net/#G1klPhdSoKdMvJw5OyiIiUt6zE0cZSjl84)  
+[Diagrama de Classes em UML - Versão final](https://drive.google.com/file/d/1klPhdSoKdMvJw5OyiIiUt6zE0cZSjl84/view?usp=sharing)  
   
