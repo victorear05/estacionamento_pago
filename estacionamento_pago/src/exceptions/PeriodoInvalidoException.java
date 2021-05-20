@@ -1,5 +1,6 @@
 package exceptions;
 
+@SuppressWarnings("serial")
 public class PeriodoInvalidoException extends Exception{
 	public PeriodoInvalidoException(){ 
         super();

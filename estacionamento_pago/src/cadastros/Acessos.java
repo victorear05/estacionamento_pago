@@ -28,12 +28,28 @@ public class Acessos {
 		
 		int DiaE = entrada.getDayOfMonth();
 		int DiaS = saida.getDayOfMonth();
+		int MesE = entrada.getMonthValue();
+		int MesS = saida.getMonthValue();
+		int mesFinal = 0;
+		int diaFinal = 0;
 		
 		Valores preco = null;
 		
 		if(v.getMensalista() == null) {
-			if (DiaE != DiaS) {	
-				preco = new FPernoite(duracao_m);
+			if (DiaE != DiaS) {
+					if(DiaE < DiaS) {
+						int recebeDia = DiaS;
+						DiaS = DiaE;
+						DiaE = recebeDia;
+						diaFinal = DiaE - DiaS;
+					}
+					if(MesE < MesS) {
+						int recebeMes = MesS;
+						MesS = MesE;
+						MesE = recebeMes;
+						mesFinal = MesE - MesS;
+					}
+				preco = new FPernoite(duracao_m, diaFinal, mesFinal);
 			}else if (duracao_m < 15) {
 				preco = new FMinuto(duracao_m);
 			}else if(duracao_m < 60) {

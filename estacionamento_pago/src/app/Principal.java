@@ -23,11 +23,11 @@ public class Principal {
 		
 		int opcao = 0;
 		
-		String menu = "Digite a opção desejada:\n"
+		String menu = "Digite a opÃ§Ã£o desejada:\n"
 				+ "1 - Nova entrada simples\n" 		
 				+ "2 - Entrada de mensalista\n"		
 				+ "3 - Listar todos os Acessos\n"
-				+ "4 - Listar todos os veículo cadastrados\n"
+				+ "4 - Listar todos os veÃ­culo cadastrados\n"
 				+ "5 - Listar todos os mensalistas cadastrados\n"
 				+ "6 - Exibir faturamento total\n"
 				+ "0 - Encerrar programa\n";
@@ -40,21 +40,21 @@ public class Principal {
 				case 1: {
 					int op = 0;
 					do {
-						String Menu = "Digite a opção desejada:\n" 
-								+ "1 - Para veículos já cadastrado\n"
-								+ "2 - Para cadastrar um novo veículo\n"
+						String Menu = "Digite a opÃ§Ã£o desejada:\n" 
+								+ "1 - Para veÃ­culos jÃ¡ cadastrado\n"
+								+ "2 - Para cadastrar um novo veÃ­culo\n"
 								+ "0 - Para voltar ao Menu Principal\n";		
 						String strOp = JOptionPane.showInputDialog(Menu);				
 						op = Integer.parseInt(strOp);
 						switch (op){
 							case 1: {
 								String placa;
-								placa = JOptionPane.showInputDialog("Digite a placa do veículo para busca");
+								placa = JOptionPane.showInputDialog("Digite a placa do veÃ­culo para busca");
 								Veiculo v = pesquisarVeiculo(placa);
 								if (v != null)
 									novoAcesso(v);
 								else
-									JOptionPane.showMessageDialog(null, "Veículo não encontrado!");
+									JOptionPane.showMessageDialog(null, "VeÃ­culo nÃ£o encontrado!");
 								op = 0;
 								break;
 							}
@@ -70,7 +70,7 @@ public class Principal {
 							}
 							
 							default: {
-								JOptionPane.showMessageDialog(null, "Opção inválida, por favor selecione uma opção válida!\n");
+								JOptionPane.showMessageDialog(null, "OpÃ§Ã£o invÃ¡lida, por favor selecione uma opÃ§Ã£o vÃ¡lida!\n");
 								break;				
 							}
 						}
@@ -81,9 +81,9 @@ public class Principal {
 				case 2: {
 					int op = 0;
 					do {
-						String Menu = "Digite a opção desejada:\n"
-								+ "1 - Para usuário já cadastrado\n"
-								+ "2 - Para cadastrar um novo usuário\n"
+						String Menu = "Digite a opÃ§Ã£o desejada:\n"
+								+ "1 - Para usuÃ¡rio jÃ¡ cadastrado\n"
+								+ "2 - Para cadastrar um novo usuÃ¡rio\n"
 								+ "0 - Para voltar ao Menu Principal\n";
 						String strOp = JOptionPane.showInputDialog(Menu);
 						op = Integer.parseInt(strOp);
@@ -94,16 +94,16 @@ public class Principal {
 								Mensalista M = pesquisarMensalista(CNH);
 								if(M != null) {
 									int opc = 0;
-									String strOpc= JOptionPane.showInputDialog("Digite a opção desejada: \n"
-											+ "1 - Para pesquisar veículo já cadastrado\n"
-											+ "2 - Para cadastrar novo veículo\n");
+									String strOpc= JOptionPane.showInputDialog("Digite a opÃ§Ã£o desejada: \n"
+											+ "1 - Para pesquisar veÃ­culo jÃ¡ cadastrado\n"
+											+ "2 - Para cadastrar novo veÃ­culo\n");
 									opc = Integer.parseInt(strOpc);
 									if(opc == 1) {
 										v = pesquisarVMensalista(M);
 										if(v != null)
 											novoAcesso(v);	
 										else
-											JOptionPane.showMessageDialog(null, "Veículo não encontrado!\n");
+											JOptionPane.showMessageDialog(null, "VeÃ­culo nÃ£o encontrado!\n");
 									}
 									if(opc == 2)
 										v = cadastrarVeiculoM(M);
@@ -111,7 +111,7 @@ public class Principal {
 									op = 0;
 								}
 								else
-									JOptionPane.showMessageDialog(null, "Usuário não encontrado!");	
+									JOptionPane.showMessageDialog(null, "UsuÃ¡rio nÃ£o encontrado!");	
 								break;	
 							}
 	
@@ -126,7 +126,7 @@ public class Principal {
 							}
 							
 							default: {
-								JOptionPane.showMessageDialog(null, "Opção inválida, por favor selecione uma opção válida!\n");
+								JOptionPane.showMessageDialog(null, "OpÃ§Ã£o invÃ¡lida, por favor selecione uma opÃ§Ã£o vÃ¡lida!\n");
 								break;				
 							}
 						}	
@@ -159,7 +159,7 @@ public class Principal {
 				}
 				
 				default: {
-					JOptionPane.showMessageDialog(null, "Opção inválida, por favor selecione uma opção válida");
+					JOptionPane.showMessageDialog(null, "OpÃ§Ã£o invÃ¡lida, por favor selecione uma opÃ§Ã£o vÃ¡lida");
 					break;
 				}
 			}
@@ -263,9 +263,9 @@ public class Principal {
 		repeat = true;
 		while(repeat == true) {
 			try {
-				endereco = JOptionPane.showInputDialog("Endereço:\n");
+				endereco = JOptionPane.showInputDialog("EndereÃ§o:\n");
 				if (endereco.equals("")) {
-					throw new DadosPessoaisIncompletosException("Campo endereço vazio!");
+					throw new DadosPessoaisIncompletosException("Campo endereÃ§o vazio!");
 				}
 				repeat = false;
 			}catch(DadosPessoaisIncompletosException e) {
@@ -290,11 +290,11 @@ public class Principal {
 			}
 		}
 		
-		telefone = JOptionPane.showInputDialog("Telefone (opcional):\nCaso não queira cadastrar um telefone, deixe em branco\n");			
+		telefone = JOptionPane.showInputDialog("Telefone (opcional):\nCaso nÃ£o queira cadastrar um telefone, deixe em branco\n");			
 		
 		Mensalista M = new Mensalista(nome, endereco, celular, telefone, CNH);
 		cadM.add(M);
-		JOptionPane.showMessageDialog(null, "Usuário Cadastrado, cadastre agora o veículo de acesso!\n");
+		JOptionPane.showMessageDialog(null, "UsuÃ¡rio Cadastrado, cadastre agora o veÃ­culo de acesso!\n");
 		cadastrarVeiculoM(M);
 	}
 
@@ -328,13 +328,13 @@ public class Principal {
 				repeat = true;
 				while(repeat == true) {
 					try {
-						strEntrada = JOptionPane.showInputDialog("Digite a data e hora de entrada do veículo, como no exemplo:\n" + 
+						strEntrada = JOptionPane.showInputDialog("Digite a data e hora de entrada do veÃ­culo, como no exemplo:\n" + 
 																 "DD/MM/AAAA HH:MM");
 						if(strEntrada.equals(""))
 							throw new DadosAcessoIncompletosException("Campo entrada vazio!");
 						entrada = LocalDateTime.parse(strEntrada, formato);
 						if(entrada.getHour() >= 20 || entrada.getHour() < 6)
-							throw new EstacionamentoFechadoException("Horário de entrada inválido, estacionamento fechado!");
+							throw new EstacionamentoFechadoException("HorÃ¡rio de entrada invÃ¡lido, estacionamento fechado!");
 						repeat = false;
 					}catch(DadosAcessoIncompletosException e) {
 						String msg = "DadosAcessoIncompletosException\n" + e.getMessage();
@@ -350,13 +350,13 @@ public class Principal {
 				repeat = true;
 				while(repeat == true) {
 					try {
-						strSaida = JOptionPane.showInputDialog("Digite a data e hora de saída do veículo como no exemplo:\n" + 
+						strSaida = JOptionPane.showInputDialog("Digite a data e hora de saÃ­da do veÃ­culo como no exemplo:\n" + 
 															   "DD/MM/AAAA HH:MM");
 						if(strSaida.equals(""))
-							throw new DadosAcessoIncompletosException("Campo saída vazio!");
+							throw new DadosAcessoIncompletosException("Campo saÃ­da vazio!");
 						saida = LocalDateTime.parse(strSaida, formato);
 						if(saida.getHour() >= 20 || saida.getHour() < 6)
-							throw new EstacionamentoFechadoException("Horário de saída inválido, estacionamento fechado!");
+							throw new EstacionamentoFechadoException("HorÃ¡rio de saÃ­da invÃ¡lido, estacionamento fechado!");
 						repeat = false;
 					}catch(DadosAcessoIncompletosException e ) {
 						String msg = "DadosAcessoIncompletosException\n" + e.getMessage();
@@ -370,10 +370,10 @@ public class Principal {
 				}
 							
 				if(saida.isBefore(entrada) == true || saida.isEqual(entrada))
-					throw new PeriodoInvalidoException("Período igual ou inferior a zero, digite uma entrada e uma saída válidas!");
+					throw new PeriodoInvalidoException("PerÃ­odo igual ou inferior a zero, digite uma entrada e uma saÃ­da vÃ¡lidas!");
 				repeat1 = false;
 			}catch(PeriodoInvalidoException e) {
-				String msg = "PeriodoInválidoException\n" + e.getMessage();
+				String msg = "PeriodoInvalidoException\n" + e.getMessage();
 				JOptionPane.showMessageDialog(null, msg);
 				repeat1 = true;
 			}
@@ -435,7 +435,7 @@ public class Principal {
 			i++;
 		}
 		if(Veic.equals(""))
-			JOptionPane.showMessageDialog(null, "Sem registros de veículos!");
+			JOptionPane.showMessageDialog(null, "Sem registros de veÃ­culos!");
 		else
 			JOptionPane.showMessageDialog(null, Veic);
 	}
@@ -447,7 +447,7 @@ public class Principal {
 			Mens += "Mensalista " + i + ":\n"
 				  +	"Nome: " + M.getNome() + '\n' 
 			      + "CNH: " + M.getCNH() + '\n' 
-			      + "Endereço: " + M.getEndereco() + '\n'
+			      + "EndereÃ§o: " + M.getEndereco() + '\n'
 			      + "Celular: " + M.getCelular() + '\n'
 			      + "Telefone: " + M.getTelefone() + "\n\n";
 			i++;
